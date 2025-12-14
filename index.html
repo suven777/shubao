@@ -1,0 +1,3370 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>恋爱心理成熟度测试 - 探索你的恋爱心智水平</title>
+    <script src="https://cdn.tailwindcss.com/3.3.3"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.9.1/chart.min.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;700&family=Ma+Shan+Zheng&family=ZCOOL+KuaiLe&family=Playfair+Display:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        /* 隐藏类 */
+        .hidden {
+            display: none !important;
+        }
+        
+        body {
+            font-family: 'Noto Sans SC', sans-serif;
+            background: #F5F7FA;
+            background-attachment: fixed;
+            color: #2D3748;
+            overflow-x: hidden;
+            position: relative;
+            filter: brightness(0.98) contrast(1.02);
+            line-height: 1.7;
+            letter-spacing: 0.02em;
+        }
+        
+        /* 添加背景纹理和装饰元素 */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: 
+                radial-gradient(circle at 20% 30%, rgba(128, 90, 213, 0.08) 0%, transparent 50%),
+                radial-gradient(circle at 80% 20%, rgba(85, 60, 154, 0.08) 0%, transparent 50%),
+                radial-gradient(circle at 40% 80%, rgba(233, 216, 253, 0.08) 0%, transparent 50%),
+                radial-gradient(circle at 70% 70%, rgba(139, 92, 246, 0.06) 0%, transparent 50%);
+            background-attachment: fixed;
+            z-index: -1;
+            opacity: 0.6;
+        }
+        
+        /* 添加柔和的波浪纹理 */
+        body::after {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: 
+                linear-gradient(120deg, rgba(128, 90, 213, 0.03) 25%, transparent 25%),
+                linear-gradient(240deg, rgba(85, 60, 154, 0.03) 25%, transparent 25%),
+                linear-gradient(120deg, rgba(233, 216, 253, 0.03) 25%, transparent 25%),
+                linear-gradient(240deg, rgba(139, 92, 246, 0.03) 25%, transparent 25%);
+            background-size: 60px 100px;
+            background-position: 0 0, 30px 50px, 30px 50px, 60px 100px;
+            background-attachment: fixed;
+            z-index: -1;
+            opacity: 0.4;
+        }
+        
+        /* 手写体字体类 */
+        .font-handwriting {
+            font-family: 'Ma Shan Zheng', cursive;
+        }
+        
+        /* 圆体字体类 */
+        .font-round {
+            font-family: 'ZCOOL KuaiLe', cursive;
+        }
+        
+        /* 细黑字体类 */
+        .font-thin {
+            font-family: 'Noto Sans SC', sans-serif;
+            font-weight: 300;
+        }
+
+        .content-container {
+            background: transparent;
+            border-radius: 32px;
+            box-shadow: 0 12px 36px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+            padding: 2rem 1.5rem 3rem;
+        }
+
+        .content-container:hover {
+            box-shadow: 0 12px 36px rgba(0, 0, 0, 0.15);
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, #805AD5 0%, #9F7AEA 100%);
+            color: white;
+            border-radius: 50px;
+            padding: 16px 28px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+            min-height: 48px;
+            min-width: 120px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 12px rgba(128, 90, 213, 0.25);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 16px rgba(128, 90, 213, 0.35);
+        }
+
+        .btn-secondary {
+            background: white;
+            color: #805AD5;
+            border: 2px solid #805AD5;
+            border-radius: 50px;
+            padding: 14px 24px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            min-height: 48px;
+            min-width: 120px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 2px 8px rgba(128, 90, 213, 0.15);
+        }
+
+        .btn-secondary:hover {
+            background: #805AD5;
+            color: white;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 16px rgba(128, 90, 213, 0.35);
+        }
+
+        .option-card {
+            border: 2px solid #E9D8FD;
+            border-radius: 20px;
+            padding: 20px 24px;
+            margin-bottom: 16px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            min-height: 48px;
+            display: flex;
+            align-items: center;
+            background: white;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.06);
+        }
+
+        .option-card:hover {
+            border-color: #805AD5;
+            background-color: #E9D8FD;
+            transform: translateX(5px);
+            box-shadow: 0 4px 12px rgba(128, 90, 213, 0.12);
+        }
+
+        .option-card.selected {
+            border-color: #805AD5;
+            background-color: #E9D8FD;
+            box-shadow: 0 4px 12px rgba(128, 90, 213, 0.15);
+        }
+
+        .dimension-card {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 24px;
+            padding: 24px;
+            transition: all 0.3s ease;
+            border: 1px solid #FFF0F0;
+            box-shadow: 0 6px 16px rgba(0, 0, 0, 0.06);
+            margin-bottom: 16px;
+        }
+
+        .dimension-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(128, 90, 213, 0.12);
+            border-color: #805AD5;
+        }
+        
+        /* 装饰性背景元素动画 */
+        @keyframes blob {
+            0%, 100% {
+                transform: translate(0, 0) scale(1);
+            }
+            25% {
+                transform: translate(20px, -20px) scale(1.1);
+            }
+            50% {
+                transform: translate(0, 20px) scale(0.9);
+            }
+            75% {
+                transform: translate(-20px, -10px) scale(1.05);
+            }
+        }
+        
+        .animate-blob {
+            animation: blob 7s infinite;
+        }
+        
+        .animation-delay-2000 {
+            animation-delay: 2s;
+        }
+        
+        .animation-delay-4000 {
+            animation-delay: 4s;
+        }
+        
+
+        
+        /* 脉动动画 */
+        @keyframes pulse {
+            0%, 100% {
+                transform: scale(1);
+                opacity: 1;
+            }
+            50% {
+                transform: scale(1.05);
+                opacity: 0.8;
+            }
+        }
+        
+        .pulse-animation {
+            animation: pulse 2s infinite;
+        }
+        
+        /* 闪烁动效 */
+        @keyframes sparkle {
+            0%, 100% {
+                box-shadow: 0 4px 12px rgba(128, 90, 213, 0.25);
+            }
+            25% {
+                box-shadow: 0 6px 16px rgba(128, 90, 213, 0.4), 0 0 10px rgba(255, 255, 255, 0.6);
+            }
+            50% {
+                box-shadow: 0 4px 12px rgba(128, 90, 213, 0.25), 0 0 20px rgba(255, 255, 255, 0.8), 0 0 30px rgba(128, 90, 213, 0.4);
+            }
+            75% {
+                box-shadow: 0 6px 16px rgba(128, 90, 213, 0.4), 0 0 10px rgba(255, 255, 255, 0.6);
+            }
+        }
+        
+        .sparkle-animation {
+            animation: sparkle 1.5s infinite;
+        }
+        
+        /* 选中状态样式 */
+        .zodiac-option.selected {
+            border-width: 3px;
+            box-shadow: 0 0 15px rgba(255, 182, 193, 0.3);
+        }
+        
+        /* 选中标记动画 */
+        .checkmark {
+            transition: all 0.3s ease;
+        }
+        
+        .zodiac-option.selected .checkmark {
+            animation: checkmark-pulse 0.5s ease;
+        }
+        
+        @keyframes checkmark-pulse {
+            0% {
+                transform: scale(0);
+                opacity: 0;
+            }
+            50% {
+                transform: scale(1.2);
+                opacity: 1;
+            }
+            100% {
+                transform: scale(1);
+                opacity: 1;
+            }
+        }
+        
+        /* 悬停效果增强 */
+        .zodiac-option:hover {
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+        }
+        
+        /* 确认按钮增强 */
+        #confirm-zodiac:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+            animation: none;
+        }
+        
+        /* 跳过按钮样式 */
+        #skip-zodiac {
+            transition: all 0.3s ease;
+        }
+        
+        #skip-zodiac:hover {
+            background-color: #f0f0f0;
+            transform: translateY(-2px);
+        }
+
+        .progress-bar {
+            height: 10px;
+            background-color: #e0e0e0;
+            border-radius: 5px;
+            overflow: hidden;
+            width: 100%;
+            max-width: 600px;
+            margin: 0 auto;
+            display: block;
+            position: relative;
+            z-index: 1;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #805AD5 0%, #9F7AEA 100%);
+            border-radius: 5px;
+            transition: width 0.5s ease;
+            width: 0%; /* 初始宽度为0，确保从0开始动画 */
+            display: block;
+            position: relative;
+            z-index: 2;
+            animation: progress-beat 1.5s infinite;
+        }
+        
+        /* 进度条心跳脉动动画 */
+        @keyframes progress-beat {
+            0% { transform: scaleY(1); }
+            7% { transform: scaleY(1.2); }
+            15% { transform: scaleY(1); }
+            22% { transform: scaleY(1.3); }
+            30% { transform: scaleY(1); }
+            80% { transform: scaleY(1); }
+            100% { transform: scaleY(1); }
+        }
+
+        .floating-heart {
+            position: absolute;
+            color: rgba(138, 43, 226, 0.2);
+            animation: float 3s ease-in-out infinite;
+            z-index: -1;
+        }
+
+        @keyframes float {
+            0%, 100% {
+                transform: translateY(0) rotate(0deg);
+                opacity: 0.2;
+            }
+            50% {
+                transform: translateY(-20px) rotate(10deg);
+                opacity: 0.4;
+            }
+        }
+        
+        /* 心跳动画 - 模拟真实心跳节奏 */
+        @keyframes heartbeat {
+            0% { transform: scale(1); }
+            7% { transform: scale(1.1); }
+            15% { transform: scale(1); }
+            22% { transform: scale(1.15); }
+            30% { transform: scale(1); }
+            80% { transform: scale(1); }
+            100% { transform: scale(1); }
+        }
+        
+        /* 心跳动画类 */
+        .animate-heartbeat {
+            animation: heartbeat 1.5s infinite;
+        }
+
+        /* 淡入动画 */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        /* 滚动渐入动画 */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* 应用动画的类 */
+        .fade-in {
+            animation: fadeIn 0.6s ease-in;
+        }
+
+        .fade-in-up {
+            animation: fadeInUp 0.8s ease-out;
+        }
+
+        /* 延迟动画 */
+        .delay-100 {
+            animation-delay: 0.1s;
+        }
+
+        .delay-200 {
+            animation-delay: 0.2s;
+        }
+
+        .delay-300 {
+            animation-delay: 0.3s;
+        }
+
+        .delay-400 {
+            animation-delay: 0.4s;
+        }
+
+        .delay-500 {
+            animation-delay: 0.5s;
+        }
+
+        /* 卡片化设计的新样式 */
+        .card-primary {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 28px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+            border: 1px solid #FFF0F0;
+            transition: all 0.3s ease;
+        }
+        
+        .card-secondary {
+            background: rgba(255, 245, 245, 0.9);
+            border-radius: 24px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.04);
+            border: 1px solid #FFF0F0;
+        }
+        
+        .card-feature {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 20px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.04);
+            border: 1px solid #FFF0F0;
+            transition: all 0.3s ease;
+        }
+        
+        .card-cta {
+            background: linear-gradient(135deg, #805AD5 0%, #9F7AEA 100%);
+            border-radius: 28px;
+            box-shadow: 0 8px 20px rgba(128, 90, 213, 0.15);
+            border: 1px solid #805AD5;
+            transition: all 0.3s ease;
+        }
+
+        /* 轻微的缩放动画 */
+        @keyframes scaleHover {
+            0%, 100% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.02);
+            }
+        }
+
+        /* 应用到按钮的轻微缩放 */
+        .btn-primary, .btn-secondary {
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        /* 卡片悬停效果增强 */
+        .dimension-card {
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .dimension-card:hover {
+            transform: translateY(-5px) scale(1.02);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+        }
+
+        /* 页面加载时的元素动画 */
+        .intro-page .headline, .intro-page .subtitle {
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeInUp 0.8s ease-out 0.2s forwards;
+        }
+
+        .intro-page .dimension-card {
+            opacity: 0;
+            transform: translateY(30px);
+        }
+
+        .intro-page .dimension-card:nth-child(1) {
+            animation: fadeInUp 0.8s ease-out 0.4s forwards;
+        }
+
+        .intro-page .dimension-card:nth-child(2) {
+            animation: fadeInUp 0.8s ease-out 0.6s forwards;
+        }
+
+        .intro-page .dimension-card:nth-child(3) {
+            animation: fadeInUp 0.8s ease-out 0.8s forwards;
+        }
+
+        /* CTA区域动画 */
+        .call-to-action {
+            opacity: 0;
+            transform: translateY(30px);
+            animation: fadeInUp 0.8s ease-out 1.0s forwards;
+        }
+
+        .chart-container {
+            position: relative;
+            height: 400px;
+            width: 100%;
+        }
+
+        /* 恋爱成熟度得分UI样式 */
+        #overall-score {
+            transition: all 0.3s ease;
+        }
+
+        #overall-score:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(236, 72, 153, 0.2);
+        }
+
+        #score-value {
+            transition: all 0.5s ease;
+        }
+
+        #score-level {
+            transition: all 0.3s ease;
+        }
+
+        #score-level:hover {
+            transform: scale(1.05);
+            background-color: #fecdd3;
+        }
+
+        #score-range-fill {
+            transition: width 1s ease-in-out;
+        }
+
+        /* 响应式设计 */
+        @media (max-width: 768px) {
+            .content-container {
+                border-radius: 16px;
+                margin: 1rem;
+                padding: 1.5rem 1rem 2rem;
+                max-width: calc(100% - 2rem); /* 确保容器宽度合适 */
+            }
+            
+            .chart-container {
+                height: 300px;
+            }
+            
+            /* 字体大小优化 */
+            .text-5xl {
+                font-size: 2.5rem;
+            }
+            
+            .text-4xl {
+                font-size: 2rem;
+            }
+            
+            .text-3xl {
+                font-size: 1.75rem;
+            }
+            
+            .text-2xl {
+                font-size: 1.5rem;
+            }
+            
+            .text-xl {
+                font-size: 1.25rem;
+            }
+        }
+        
+        /* 手机屏幕优化 */
+        @media (max-width: 480px) {
+            .content-container {
+                margin: 0.5rem;
+                padding: 1rem 0.75rem 1.5rem;
+                max-width: calc(100% - 1rem); /* 确保容器宽度合适 */
+            }
+            
+            .chart-container {
+                height: 250px;
+            }
+            
+            /* 字体大小优化 */
+            .text-5xl {
+                font-size: 2rem;
+            }
+            
+            .text-4xl {
+                font-size: 1.75rem;
+            }
+            
+            .text-3xl {
+                font-size: 1.5rem;
+            }
+            
+            .text-2xl {
+                font-size: 1.25rem;
+            }
+            
+            .text-xl {
+                font-size: 1.125rem;
+            }
+        }
+        
+        /* 超小屏幕优化 */
+        @media (max-width: 320px) {
+            /* 进一步减少内边距 */
+            .content-container {
+                padding: 0.75rem 0.5rem 1rem;
+                margin: 0.25rem;
+                max-width: calc(100% - 0.5rem); /* 确保容器宽度合适 */
+            }
+            
+            /* 进一步优化图表大小 */
+            .chart-container {
+                height: 200px;
+            }
+            
+            /* 优化选项卡片显示 */
+            .option-card {
+                padding: 16px 20px;
+                min-height: auto;
+                margin-bottom: 12px;
+                width: 100%; /* 确保选项卡片宽度合适 */
+            }
+            
+            /* 进一步减少字体大小 */
+            .text-5xl {
+                font-size: 1.75rem;
+            }
+            
+            .text-4xl {
+                font-size: 1.5rem;
+            }
+            
+            .text-3xl {
+                font-size: 1.375rem;
+            }
+            
+            .text-2xl {
+                font-size: 1.25rem;
+            }
+            
+            .text-xl {
+                font-size: 1.125rem;
+            }
+            
+            /* 减少元素外边距 */
+            .mb-8 {
+                margin-bottom: 1.5rem;
+            }
+            
+            .mb-6 {
+                margin-bottom: 1.25rem;
+            }
+            
+            /* 优化按钮内边距 */
+            .btn-primary, .btn-secondary {
+                padding: 14px 20px;
+                width: 100%; /* 确保按钮宽度合适 */
+            }
+        }
+        
+        /* 优化所有移动设备上的测试题页面布局 */
+        @media (max-width: 640px) {
+            /* 确保主内容容器在移动设备上宽度合适 */
+            .content-container {
+                max-width: 95vw;
+                margin: 0.5rem auto;
+            }
+            
+            /* 优化测试页面容器 */
+            #test-page {
+                width: 100%;
+                padding: 0;
+            }
+            
+            /* 优化问题容器 */
+            #question-container {
+                width: 100%;
+                padding: 0;
+            }
+            
+            /* 优化选项容器 */
+            #options-container {
+                width: 100%;
+                space-y: 3;
+                padding: 0;
+            }
+            
+            /* 优化选项卡片 */
+            .option-card {
+                width: 100%;
+                max-width: 100%;
+                padding: 16px 20px;
+                border-radius: 16px;
+            }
+            
+            /* 优化页面标题区域 */
+            .text-center.mb-12 {
+                margin-bottom: 2rem;
+            }
+            
+            /* 优化按钮布局 */
+            .flex.justify-between {
+                flex-direction: column;
+                gap: 1rem;
+            }
+            
+            /* 优化按钮宽度 */
+            #prev-btn, #next-btn {
+                width: 100%;
+                justify-content: center;
+            }
+        }
+    </style>
+</head>
+<body class="min-h-screen py-8 px-4 flex flex-col items-center justify-center">
+    <!-- 只保留结果页面的跳动爱心 -->
+
+    <!-- 主内容容器 -->
+    <div class="content-container w-full max-w-4xl p-4 sm:p-6 md:p-8 lg:p-12">
+        <!-- 引导页 -->
+        <div id="intro-page" class="text-center relative overflow-hidden flex flex-col justify-center" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);">
+            <!-- 装饰性背景元素 -->
+            <div class="absolute -top-40 -right-40 w-96 h-96 bg-[#9C27B0] rounded-full mix-blend-multiply filter blur-3xl opacity-30 animate-blob"></div>
+            <div class="absolute -bottom-40 -left-40 w-96 h-96 bg-[#6A1B9A] rounded-full mix-blend-multiply filter blur-3xl opacity-30 animate-blob animation-delay-2000"></div>
+            <div class="absolute top-1/3 left-1/4 w-64 h-64 bg-[#8E24AA] rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-blob animation-delay-4000"></div>
+            <div class="absolute top-2/3 right-1/4 w-64 h-64 bg-[#AB47BC] rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-blob animation-delay-6000"></div>
+            
+            <!-- 1. 头部区域 -->
+                <div class="relative z-10 mb-8 px-6 mt-8">
+
+                
+                <!-- 店铺信息 -->
+                <div class="text-white/90 text-4xl sm:text-5xl mb-2 flex items-center justify-center font-round">
+                    <span class="mr-2 text-pink-300">❤</span>
+                    <span>心瘾实验室</span>
+                </div>
+                
+                <!-- 主标题 -->
+                <h1 class="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold bg-gradient-to-r from-white to-purple-200 bg-clip-text text-transparent mt-8 mb-2 leading-tight font-handwriting drop-shadow-lg">
+                    恋爱心理成熟度指数评估
+                </h1>
+                <p class="text-white/90 text-xs sm:text-sm mb-4 font-light italic">Love Psychological Maturity Index Assessment</p>
+                
+
+            </div>
+            
+            <!-- 2. 核心卖点卡片 -->
+                <div class="relative z-10 grid grid-cols-1 gap-6 px-6 max-w-6xl mx-auto mb-12">
+
+                
+
+            </div>
+            
+
+            
+
+            
+
+            
+            <!-- 6. 最后行动号召 -->
+            <div class="relative z-10 px-6 mb-8">
+                <div class="card-cta bg-gradient-to-br from-white/10 via-white/5 to-white/10 rounded-3xl p-6 sm:p-8 max-w-6xl mx-auto shadow-xl transform transition-all duration-500 hover:shadow-2xl border border-white/20 backdrop-blur-md">
+                    <!-- 装饰元素 -->
+                    <div class="absolute top-0 right-0 w-64 h-64 bg-white opacity-5 rounded-full -mr-20 -mt-20 animate-pulse"></div>
+                    <div class="absolute bottom-0 left-0 w-48 h-48 bg-white opacity-5 rounded-full -ml-16 -mb-16 animate-pulse" style="animation-delay: 1s;"></div>
+                    <div class="absolute top-1/2 left-1/2 w-96 h-96 bg-purple-300 opacity-10 rounded-full -translate-x-1/2 -translate-y-1/2 blur-3xl"></div>
+                    
+                    <div class="grid grid-cols-1 gap-6 items-center relative z-10">
+                        <div class="text-center sm:text-left">
+                            <h3 class="text-2xl sm:text-3xl md:text-4xl font-bold text-white mb-4 leading-tight">
+                                <span class="drop-shadow-md">
+                                    你是否拥有成熟的恋爱观？
+                                </span>
+                            </h3>
+                            <p class="text-white/90 text-base sm:text-lg mb-6 sm:mb-8 leading-relaxed drop-shadow-sm font-handwriting italic">
+                                真正成熟的爱情，不是要求永远不离开你，而是我有能力离开你，却依然选择留在你的身边。
+                            </p>
+                            <div class="flex flex-wrap gap-4 sm:gap-6 justify-center sm:justify-start">
+                                <div class="flex items-center bg-white/20 px-4 py-2 rounded-full backdrop-blur-sm border border-white/30">
+                                    <i class="fas fa-check-circle text-green-200 mr-2 text-lg"></i>
+                                    <span class="text-white font-medium text-sm">科学评估</span>
+                                </div>
+                                <div class="flex items-center bg-white/20 px-4 py-2 rounded-full backdrop-blur-sm border border-white/30">
+                                    <i class="fas fa-check-circle text-green-200 mr-2 text-lg"></i>
+                                    <span class="text-white font-medium text-sm">个性化报告</span>
+                                </div>
+                                <div class="flex items-center bg-white/20 px-4 py-2 rounded-full backdrop-blur-sm border border-white/30">
+                                    <i class="fas fa-check-circle text-green-200 mr-2 text-lg"></i>
+                                    <span class="text-white font-medium text-sm">成长建议</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="flex flex-col gap-4 sm:gap-5">
+                            <button id="final-self-test-btn" class="w-full bg-white text-purple-600 py-4 sm:py-5 rounded-full text-lg sm:text-xl font-semibold shadow-xl hover:bg-purple-50 transition-all duration-300 transform hover:scale-105 hover:shadow-2xl border border-purple-100 sparkle-animation">
+                                <i class="fas fa-star mr-2 text-yellow-400"></i> 自我评估（读懂自己）
+                            </button>
+                            <button id="final-lover-test-btn" class="w-full bg-gradient-to-r from-#667eea to-#764ba2 text-white py-4 sm:py-5 rounded-full text-lg sm:text-xl font-semibold shadow-xl hover:from-#5a6fd8 hover:to-#6b46c1 transition-all duration-300 transform hover:scale-105 hover:shadow-2xl border border-purple-200 sparkle-animation">
+                                伴侣评估（解锁TA）
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- 7. 底部说明 -->
+            <div class="relative z-10 px-6 mb-12 sm:mb-8">
+                <div class="text-center text-sm text-gray-600">
+                    <p class="mb-2 text-purple-900">© 2024 心瘾实验室 | 专业恋爱心理测评平台</p>
+                    <div class="flex flex-wrap justify-center gap-4">
+                        <span>隐私保护声明</span>
+                        <span>理论依据说明</span>
+                        <span>使用条款</span>
+                        <span>联系我们</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
+        <!-- 星座选择页面 -->
+        <div id="zodiac-page" class="hidden min-h-screen py-12 px-4" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);">
+            <div class="max-w-4xl mx-auto bg-white p-8 md:p-10 rounded-3xl shadow-xl">
+                <div class="text-center mb-10">
+                    <div class="relative inline-block mb-4">
+                        <i class="fas fa-star text-8xl text-yellow-400" style="text-shadow: 0 0 20px rgba(251, 191, 36, 0.5);"></i>
+                        <div class="absolute -top-2 -right-2 w-6 h-6 bg-purple-400 rounded-full animate-ping"></div>
+                    </div>
+                    <h2 class="text-4xl font-bold text-gray-800 mb-4">星座选择</h2>
+                    <p class="text-xl text-gray-600">选择你的星座，获得更个性化的恋爱心理解读</p>
+                </div>
+                
+                <div class="mb-10">
+                    <p class="text-center text-gray-700 mb-2">🌟 趣味小提示 🌟</p>
+                    <p class="text-center text-sm text-purple-600 mb-6">星座分析只是恋爱心理解读的补充，你的真实感受和行为才是最重要的哦～</p>
+                    
+                    <div id="zodiac-container" class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-4 sm:gap-5 md:gap-6">
+                        <!-- 星座选项将通过JavaScript动态生成 -->
+                    </div>
+                </div>
+                
+                <div class="flex flex-col sm:flex-row justify-center gap-4">
+                    <button id="skip-zodiac" class="btn-secondary w-full sm:w-auto px-8 py-3 text-lg border-2 border-purple-300 hover:border-purple-500 transition-all duration-300">
+                        <i class="fas fa-arrow-right mr-2"></i> 跳过
+                    </button>
+                    <button id="confirm-zodiac" class="btn-primary w-full sm:w-auto px-8 py-3 text-lg font-semibold transition-all duration-300" disabled>
+                        <i class="fas fa-check mr-2"></i> 确认选择
+                    </button>
+                </div>
+                
+                <div class="mt-6 text-center">
+                    <button id="clear-zodiac" class="text-sm text-purple-600 hover:text-purple-800 transition-colors duration-200">
+                        <i class="fas fa-times mr-1"></i> 清除选择
+                    </button>
+                </div>
+            </div>
+        </div>
+        
+        <!-- 测试页面 -->
+        <div id="test-page" class="hidden">
+            <!-- 页面标题区域 -->
+            <div class="text-center mb-12">
+                <h1 class="text-3xl sm:text-4xl md:text-5xl font-bold bg-gradient-to-r from-#2D3748 to-#4A5568 bg-clip-text text-transparent mb-3 leading-tight font-handwriting">
+                    恋爱心理成熟度指数评估
+                </h1>
+                <p class="text-purple-900 text-lg font-medium">心瘾实验室</p>
+                <div class="mt-6 mb-8">
+                    <div class="flex justify-between items-center mb-2">
+                        <h2 id="test-title" class="text-2xl font-semibold text-gray-800">自我测试</h2>
+                        <span id="question-progress" class="text-gray-500">1/10</span>
+                    </div>
+                    <div class="progress-bar">
+                        <div id="progress-fill" class="progress-fill"></div>
+                    </div>
+                </div>
+            </div>
+            
+            <div id="dimension-indicator" class="mb-6 text-sm text-purple-600 font-medium">
+                维度：情绪觉察与调节
+            </div>
+            
+            <div id="question-container" class="mb-8">
+                <h3 id="question-text" class="text-xl font-medium text-gray-600 mb-6">
+                    当我与伴侣产生分歧时，我会...
+                </h3>
+                <div id="options-container" class="space-y-3">
+                    <!-- 选项将通过JavaScript动态生成 -->
+                </div>
+            </div>
+            
+            <div class="flex justify-between">
+                <button id="prev-btn" class="btn-secondary hidden">
+                    <i class="fas fa-arrow-left mr-2"></i> 上一题
+                </button>
+                <div class="ml-auto">
+                    <button id="next-btn" class="btn-primary">
+                        下一题 <i class="fas fa-arrow-right ml-2"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- 结果页面 -->
+        <div id="result-page" class="hidden">
+            <h2 class="text-3xl font-bold text-center text-gray-800 mb-8">测试结果</h2>
+            
+            <div id="overall-score" class="text-center mb-10 bg-white p-8 rounded-3xl shadow-lg border-4 border-purple-200">
+                <div class="mb-4">
+                    <i class="fas fa-heart text-6xl text-pink-500 animate-heartbeat"></i>
+                </div>
+                <h3 id="maturity-score-title" class="text-xl font-semibold text-gray-700 mb-2">恋爱心理成熟度指数</h3>
+                <div id="score-value" class="text-5xl font-bold text-pink-600">0</div>
+                <div id="score-level" class="mt-2 inline-block px-6 py-2 bg-purple-100 text-purple-700 font-semibold rounded-full">评估中</div>
+                <p id="score-description" class="mt-4 text-gray-600">评估结果将在这里显示</p>
+                <div class="mt-6">
+                    <div class="relative w-full h-4 bg-gray-200 rounded-full overflow-hidden">
+                        <div id="score-range-fill" class="absolute top-0 left-0 h-full bg-gradient-to-r from-[#E8D5E6] via-[#C3B1E1] to-[#E8D5E6] rounded-full" style="width: 0%"></div>
+                    </div>
+                    <div class="flex justify-between text-xs text-gray-500 mt-2">
+                    <span>初学乍练 (0)</span>
+                    <span>良好基础 (60)</span>
+                    <span>理想伴侣 (100)</span>
+                </div>
+                </div>
+            </div>
+            
+            <div class="chart-container mb-10">
+                <canvas id="result-chart"></canvas>
+            </div>
+            
+            <div id="dimension-results" class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-10">
+                <!-- 维度结果将通过JavaScript动态生成 -->
+            </div>
+            
+            <!-- 新增结果解释模块 -->
+            <div id="result-explanation" class="mb-10 bg-purple-50 p-6 rounded-20">
+                <h3 class="text-2xl font-semibold text-gray-800 mb-4">结果解释</h3>
+                <div id="explanation-content" class="text-gray-700">
+                    <!-- 结果解释内容将通过JavaScript动态生成 -->
+                </div>
+            </div>
+            
+
+            
+            <!-- 新增星座解读模块 -->
+            <div id="zodiac-interpretation" class="mb-10 bg-blue-50 p-6 rounded-20">
+                <h3 class="text-2xl font-semibold text-blue-700 mb-4">
+                    <i class="fas fa-star text-yellow-400 mr-2"></i>星座恋爱心理解读
+                </h3>
+                <div id="zodiac-content" class="text-gray-700">
+                    <!-- 星座解读内容将通过JavaScript动态生成 -->
+                </div>
+            </div>
+            
+
+            
+            <div class="flex justify-center gap-4 mb-8">
+                <button id="restart-test" class="btn-primary">
+                    <i class="fas fa-redo mr-2"></i> 重新测试
+                </button>
+                <button id="change-test-type" class="btn-secondary">
+                    <i class="fas fa-exchange-alt mr-2"></i> 切换测试类型
+                </button>
+            </div>
+            
+            <!-- 添加的温馨提示 -->
+            <div class="text-center space-y-3 mb-12 max-w-3xl mx-auto">
+                <p class="text-sm text-gray-500 font-normal italic tracking-wide" style="font-family: 'Playfair Display', serif;">
+                    每一段关系都是独特的旅程，享受过程比追求完美更重要
+                </p>
+                <p class="text-sm text-gray-500 font-normal italic tracking-wide" style="font-family: 'Playfair Display', serif;">
+                    测试结果仅供参考，真正的爱情需要用心感受和经营
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // 测试数据
+        const testData = {
+            self_test: [
+                {
+                    dimension: "情绪觉察与调节",
+                    questions: [
+                        {
+                            id: 1,
+                            text: "当我与伴侣产生分歧时，我会...",
+                            options: [
+                                {"text": "立即反驳对方观点", "score": 1},
+                                {"text": "冷静倾听后表达立场", "score": 3},
+                                {"text": "共同寻找折中方案", "score": 4}
+                            ]
+                        }
+                    ]
+                }
+            ],
+            lover_test: [
+                {
+                    dimension: "情绪觉察与调节",
+                    questions: [
+                        {
+                            id: 1,
+                            text: "当你生病卧床时，TA的照顾方式更接近哪种情况？",
+                            options: [
+                                {"text": "口头关心但不见实际行动，让你自己叫外卖", "score": 1},
+                                {"text": "按你说的做基本护理，但想不到额外需求", "score": 2},
+                                {"text": "提前买好药和流食放在床头，定时提醒你服用", "score": 3},
+                                {"text": "调整工作安排全程陪护，记录你的体温变化和用药反应", "score": 4}
+                            ]
+                        }
+                    ]
+                }
+            ]
+        };
+
+        // 为了丰富测试内容，我们扩展一些题目
+        const extendedTestData = {
+            self_test: [
+                {
+                    dimension: "边界感平衡",
+                    questions: [
+                        {
+                            id: 1,
+                            text: "当我和朋友聚会时，伴侣一直发消息催促回家，我会...",
+                            options: [
+                                {"text": "立刻结束聚会赶回去，担心对方生气", "score": 1},
+                                {"text": "回复说会早点回去，但继续待一会儿", "score": 2},
+                                {"text": "解释我想多陪会儿朋友，承诺稍后会主动联系", "score": 4}
+                            ]
+                        },
+                        {
+                            id: 2,
+                            text: "当伴侣未经我允许就查看我的社交媒体私信时，我通常会...",
+                            options: [
+                                {"text": "虽然心里不舒服，但选择忍气吞声", "score": 1},
+                                {"text": "表面没说什么，但之后会更小心保护隐私", "score": 2},
+                                {"text": "明确表示这让我感到不被尊重，希望对方以后尊重我的隐私", "score": 4}
+                            ]
+                        },
+                        {
+                            id: 3,
+                            text: "当我感到疲惫需要独处时，伴侣却想和我约会，我会...",
+                            options: [
+                                {"text": "勉强答应，不想让对方失望", "score": 1},
+                                {"text": "建议改期，但没有解释具体原因", "score": 2},
+                                {"text": "坦诚表达我现在需要休息，提出其他时间约会", "score": 4}
+                            ]
+                        },
+                        {
+                            id: 4,
+                            text: "当伴侣总是想要参与我和家人的私人聚会时，我会...",
+                            options: [
+                                {"text": "每次都带上对方，即使家人希望只有我参加", "score": 1},
+                                {"text": "偶尔带对方去，但内心有些纠结", "score": 2},
+                                {"text": "解释有些场合是家人间的私人时间，寻找其他时间让伴侣参与家庭活动", "score": 4}
+                            ]
+                        },
+                        {
+                            id: 5,
+                            text: "当我想要发展个人爱好而伴侣希望我多陪TA时，我会...",
+                            options: [
+                                {"text": "放弃爱好，优先陪伴伴侣", "score": 1},
+                                {"text": "偷偷发展爱好，不让伴侣知道", "score": 2},
+                                {"text": "与伴侣沟通爱好对我的重要性，约定合理的时间分配", "score": 4}
+                            ]
+                        }
+                    ]
+                },
+                {
+                    dimension: "沟通表达",
+                    questions: [
+                        {
+                            id: 6,
+                            text: "当伴侣忘记我们的纪念日时，我会...",
+                            options: [
+                                {"text": "生闷气一整天，等对方来哄我", "score": 1},
+                                {"text": "故意提起类似话题暗示对方", "score": 2},
+                                {"text": "直接告诉对方我对纪念日的期待，以及这次被忘记的感受", "score": 4}
+                            ]
+                        },
+                        {
+                            id: 7,
+                            text: "当我工作压力大想要倾诉时，我会如何向伴侣表达？",
+                            options: [
+                                {"text": "希望伴侣能主动察觉我的情绪", "score": 1},
+                                {"text": "简单说'最近好累'，但不具体说明", "score": 2},
+                                {"text": "详细分享工作中的困扰，明确表达我需要倾听或建议", "score": 4}
+                            ]
+                        },
+                        {
+                            id: 8,
+                            text: "当伴侣做了让我感到开心的事情时，我会...",
+                            options: [
+                                {"text": "心里感激但很少说出口", "score": 1},
+                                {"text": "简单说声谢谢", "score": 2},
+                                {"text": "具体表达我为什么开心，并感谢对方的用心", "score": 4}
+                            ]
+                        },
+                        {
+                            id: 9,
+                            text: "当我对伴侣的某些习惯感到不满时，我会...",
+                            options: [
+                                {"text": "不停抱怨，希望对方改变", "score": 1},
+                                {"text": "尽量忍耐，避免冲突", "score": 2},
+                                {"text": "用'我'开头表达感受，例如'我看到脏衣服乱扔时感到有些压力'", "score": 4}
+                            ]
+                        },
+                        {
+                            id: 10,
+                            text: "当我和伴侣计划周末活动产生分歧时，我会...",
+                            options: [
+                                {"text": "坚持自己的想法，认为对方的提议不好", "score": 1},
+                                {"text": "虽然不情愿，但还是妥协了", "score": 2},
+                                {"text": "讨论各自的想法，寻找折中的方案，比如轮流选择活动", "score": 4}
+                            ]
+                        }
+                    ]
+                },
+                {
+                    dimension: "责任与承诺",
+                    questions: [
+                        {
+                            id: 11,
+                            text: "当我们约定一起完成家务，但伴侣临时有事无法参与时，我会...",
+                            options: [
+                                {"text": "很生气，拒绝独自完成", "score": 1},
+                                {"text": "虽然无奈，但还是自己做了", "score": 2},
+                                {"text": "理解对方的情况，共同调整计划", "score": 4}
+                            ]
+                        },
+                        {
+                            id: 12,
+                            text: "当我承诺伴侣要戒烟/减肥但遇到困难时，我会...",
+                            options: [
+                                {"text": "轻易放弃，觉得承诺不重要", "score": 1},
+                                {"text": "继续尝试但不主动沟通进展", "score": 2},
+                                {"text": "诚实分享遇到的困难，寻求伴侣的理解和支持", "score": 4}
+                            ]
+                        },
+                        {
+                            id: 13,
+                            text: "当伴侣生病需要照顾时，我会...",
+                            options: [
+                                {"text": "觉得麻烦，尽量回避", "score": 1},
+                                {"text": "做一些基本的照顾，但不太用心", "score": 2},
+                                {"text": "贴心照顾，调整自己的时间来陪伴对方", "score": 4}
+                            ]
+                        },
+                        {
+                            id: 14,
+                            text: "当我们讨论未来规划时，我对长期关系的态度是...",
+                            options: [
+                                {"text": "很少考虑未来，走一步看一步", "score": 1},
+                                {"text": "有想法但不急于确定", "score": 2},
+                                {"text": "认真思考并愿意与伴侣共同规划", "score": 4}
+                            ]
+                        },
+                        {
+                            id: 15,
+                            text: "当我在外面受到异性的追求时，我会...",
+                            options: [
+                                {"text": "不告诉伴侣，享受这种感觉", "score": 1},
+                                {"text": "简单提一下，但不详细说明", "score": 2},
+                                {"text": "明确告诉对方我已有伴侣，并向自己的伴侣坦诚这件事", "score": 4}
+                            ]
+                        }
+                    ]
+                },
+                {
+                    dimension: "爱情保鲜",
+                    questions: [
+                        {
+                            id: 16,
+                            text: "当恋爱进入平淡期后，我会如何保持关系的新鲜感？",
+                            options: [
+                                {"text": "觉得平淡是必然的，没有特别行动", "score": 1},
+                                {"text": "在特殊节日准备礼物，但日常没变化", "score": 2},
+                                {"text": "定期计划约会，尝试新的活动或爱好", "score": 4}
+                            ]
+                        },
+                        {
+                            id: 17,
+                            text: "当伴侣抱怨我们相处模式太固定时，我会...",
+                            options: [
+                                {"text": "觉得对方太作，维持现状", "score": 1},
+                                {"text": "稍微尝试改变，但很快又回到习惯", "score": 2},
+                                {"text": "认真听取建议，共同探索新的相处方式", "score": 4}
+                            ]
+                        },
+                        {
+                            id: 18,
+                            text: "我多久会向伴侣表达一次爱意？",
+                            options: [
+                                {"text": "很少表达，认为对方应该知道", "score": 1},
+                                {"text": "在特定场合才会表达", "score": 2},
+                                {"text": "经常通过言语、行动或小惊喜表达爱意", "score": 4}
+                            ]
+                        },
+                        {
+                            id: 19,
+                            text: "当我发现伴侣的新优点时，我会...",
+                            options: [
+                                {"text": "心里认可但不表达", "score": 1},
+                                {"text": "简单夸奖一句", "score": 2},
+                                {"text": "具体地赞美对方，并说明这个优点如何吸引我", "score": 4}
+                            ]
+                        },
+                        {
+                            id: 20,
+                            text: "当我们因为日常琐事感到疲惫时，我会...",
+                            options: [
+                                {"text": "忽略问题，继续忙碌", "score": 1},
+                                {"text": "偶尔放松，但没有特别安排", "score": 2},
+                                {"text": "主动创造二人世界，比如烛光晚餐或短途旅行", "score": 4}
+                            ]
+                        }
+                    ]
+                },
+                {
+                    dimension: "金钱观匹配",
+                    questions: [
+                        {
+                            id: 21,
+                            text: "当伴侣看中一款我认为太贵的礼物时，我会...",
+                            options: [
+                                {"text": "直接拒绝购买，认为对方浪费钱", "score": 1},
+                                {"text": "虽然不情愿，但还是买了", "score": 2},
+                                {"text": "坦诚讨论我们的预算，寻找性价比更高的替代方案", "score": 4}
+                            ]
+                        },
+                        {
+                            id: 22,
+                            text: "当我们计划旅行但对住宿标准有分歧时，我会...",
+                            options: [
+                                {"text": "坚持自己的标准，否则就不去", "score": 1},
+                                {"text": "妥协选择对方喜欢的，但心里不高兴", "score": 2},
+                                {"text": "讨论各自的需求和预算，找到双方都能接受的方案", "score": 4}
+                            ]
+                        },
+                        {
+                            id: 23,
+                            text: "关于恋爱中的日常开销，我的态度是...",
+                            options: [
+                                {"text": "必须完全AA制，一分钱都要算清楚", "score": 1},
+                                {"text": "希望对方承担大部分开销", "score": 2},
+                                {"text": "根据双方经济状况灵活安排，重要的是心意", "score": 4}
+                            ]
+                        },
+                        {
+                            id: 24,
+                            text: "当我想购买一件奢侈品而伴侣认为不必要时，我会...",
+                            options: [
+                                {"text": "坚持购买，认为这是我的自由", "score": 1},
+                                {"text": "偷偷购买，不让伴侣知道", "score": 2},
+                                {"text": "解释这件物品对我的意义，听取伴侣的想法后再决定", "score": 4}
+                            ]
+                        },
+                        {
+                            id: 25,
+                            text: "当我们需要共同承担一项大额支出时，我会...",
+                            options: [
+                                {"text": "尽量让对方多承担", "score": 1},
+                                {"text": "按照收入比例分担，但不深入讨论", "score": 2},
+                                {"text": "坦诚讨论双方的财务状况，制定合理的分担方案", "score": 4}
+                            ]
+                        }
+                    ]
+                },
+                {
+                    dimension: "安全感供给",
+                    questions: [
+                        {
+                            id: 26,
+                            text: "当伴侣晚上加班很晚没有及时回复消息时，我会...",
+                            options: [
+                                {"text": "不断发消息催促，感到非常焦虑", "score": 1},
+                                {"text": "虽然担心，但不好意思多问", "score": 2},
+                                {"text": "相信对方，等对方忙完后自然会联系我", "score": 4}
+                            ]
+                        },
+                        {
+                            id: 27,
+                            text: "当伴侣提到前任时，我会有什么反应？",
+                            options: [
+                                {"text": "立刻追问细节，担心对方还想着前任", "score": 1},
+                                {"text": "表面不在意，但心里很介意", "score": 2},
+                                {"text": "平静地听对方讲述，相信我们现在的关系", "score": 4}
+                            ]
+                        },
+                        {
+                            id: 28,
+                            text: "当我和伴侣吵架后，我会...",
+                            options: [
+                                {"text": "担心对方会离开我，急于认错求和", "score": 1},
+                                {"text": "保持距离，等对方主动联系", "score": 2},
+                                {"text": "给彼此冷静时间，然后坦诚沟通解决问题", "score": 4}
+                            ]
+                        },
+                        {
+                            id: 29,
+                            text: "当伴侣和异性朋友聚会时，我会...",
+                            options: [
+                                {"text": "要求对方随时报备，或禁止对方单独参加", "score": 1},
+                                {"text": "虽然允许，但心里很不安", "score": 2},
+                                {"text": "相信对方的分寸感，给予适当的空间", "score": 4}
+                            ]
+                        },
+                        {
+                            id: 30,
+                            text: "当我感到不安时，我会如何向伴侣寻求安慰？",
+                            options: [
+                                {"text": "不说原因，只是要求对方陪伴", "score": 1},
+                                {"text": "简单提及，但不详细说明感受", "score": 2},
+                                {"text": "坦诚分享我的担忧，明确表达我需要怎样的支持", "score": 4}
+                            ]
+                        }
+                    ]
+                },
+                {
+                    dimension: "冲突解决",
+                    questions: [
+                        {
+                            id: 31,
+                            text: "当我和伴侣因为小事发生争吵时，我会...",
+                            options: [
+                                {"text": "一定要争赢，证明自己是对的", "score": 1},
+                                {"text": "选择沉默，避免矛盾升级", "score": 2},
+                                {"text": "尝试理解对方的立场，寻找共同观点", "score": 4}
+                            ]
+                        },
+                        {
+                            id: 32,
+                            text: "当伴侣指出我的错误时，我会...",
+                            options: [
+                                {"text": "立刻反驳，为自己辩护", "score": 1},
+                                {"text": "承认错误但心里不服气", "score": 2},
+                                {"text": "认真倾听，反思自己的行为并诚恳道歉", "score": 4}
+                            ]
+                        },
+                        {
+                            id: 33,
+                            text: "当争吵变得激烈时，我会...",
+                            options: [
+                                {"text": "说出伤人的话，只为发泄情绪", "score": 1},
+                                {"text": "摔门而出，拒绝沟通", "score": 2},
+                                {"text": "提议暂时冷静，稍后再心平气和地讨论", "score": 4}
+                            ]
+                        },
+                        {
+                            id: 34,
+                            text: "当我意识到是自己的错导致争吵时，我会...",
+                            options: [
+                                {"text": "等待对方先开口，不愿主动认错", "score": 1},
+                                {"text": "简单道歉，但不深入反思", "score": 2},
+                                {"text": "诚恳道歉，说明我理解了问题所在，并提出改进方案", "score": 4}
+                            ]
+                        },
+                        {
+                            id: 35,
+                            text: "当我们解决完一个冲突后，我会...",
+                            options: [
+                                {"text": "当作没发生过，不再提起", "score": 1},
+                                {"text": "记住教训，避免再犯同样的错误", "score": 2},
+                                {"text": "与伴侣一起复盘冲突原因，制定避免类似问题的策略", "score": 4}
+                            ]
+                        }
+                    ]
+                },
+                {
+                    dimension: "情绪觉察",
+                    questions: [
+                        {
+                            id: 36,
+                            text: "当我在恋爱中感到不开心时，我通常能...",
+                            options: [
+                                {"text": "不清楚自己为什么不开心", "score": 1},
+                                {"text": "大概知道原因，但说不清楚具体感受", "score": 2},
+                                {"text": "清晰识别自己的情绪，并理解背后的原因", "score": 4}
+                            ]
+                        },
+                        {
+                            id: 37,
+                            text: "当伴侣做了一件让我意外的事情时，我会先...",
+                            options: [
+                                {"text": "立刻表达我的第一反应，不管是好是坏", "score": 1},
+                                {"text": "观察对方的意图，但不明确表达自己的感受", "score": 2},
+                                {"text": "思考自己的真实感受，然后恰当表达", "score": 4}
+                            ]
+                        },
+                        {
+                            id: 38,
+                            text: "当我感到压力大时，我会如何处理？",
+                            options: [
+                                {"text": "情绪失控，可能迁怒于伴侣", "score": 1},
+                                {"text": "压抑情绪，装作没事", "score": 2},
+                                {"text": "采取健康的方式释放压力，如运动或倾诉", "score": 4}
+                            ]
+                        },
+                        {
+                            id: 39,
+                            text: "当我发现自己对伴侣有不合理的期望时，我会...",
+                            options: [
+                                {"text": "坚持这些期望，认为伴侣应该满足我", "score": 1},
+                                {"text": "意识到问题，但不知道如何调整", "score": 2},
+                                {"text": "反思期望的合理性，与伴侣进行沟通调整", "score": 4}
+                            ]
+                        },
+                        {
+                            id: 40,
+                            text: "当我看到伴侣与他人互动时，我会如何看待自己的嫉妒情绪？",
+                            options: [
+                                {"text": "任由嫉妒情绪控制自己的行为", "score": 1},
+                                {"text": "感到羞耻，努力压抑这种情绪", "score": 2},
+                                {"text": "承认这种情绪的存在，分析原因并寻找应对方法", "score": 4}
+                            ]
+                        }
+                    ]
+                }
+            ],
+            lover_test: [
+                {
+                    dimension: "边界感平衡",
+                    questions: [
+                        {
+                            id: 1,
+                            text: "当你们约定周末各自安排活动时，TA通常会...",
+                            options: [
+                                {"text": "不断发消息打扰你，希望你改变计划", "score": 1},
+                                {"text": "虽然同意，但表现得有些失落", "score": 2},
+                                {"text": "尊重你的安排，也享受自己的时间", "score": 4}
+                            ]
+                        },
+                        {
+                            id: 2,
+                            text: "当你需要和朋友单独聚会时，TA的反应是...",
+                            options: [
+                                {"text": "要求一起参加，否则不高兴", "score": 1},
+                                {"text": "勉强同意，但一直询问聚会情况", "score": 2},
+                                {"text": "理解并支持你的社交需求", "score": 4}
+                            ]
+                        },
+                        {
+                            id: 3,
+                            text: "关于TA的个人隐私，TA通常会...",
+                            options: [
+                                {"text": "要求你完全公开，自己却保留秘密", "score": 1},
+                                {"text": "有些事情不愿意分享，但也尊重你的隐私", "score": 2},
+                                {"text": "保持适当的透明度，同时尊重彼此的私人空间", "score": 4}
+                            ]
+                        },
+                        {
+                            id: 4,
+                            text: "当你想独自处理一些事情时，TA会...",
+                            options: [
+                                {"text": "认为你不信任TA，坚持要参与", "score": 1},
+                                {"text": "虽然不参与，但显得有些不开心", "score": 2},
+                                {"text": "理解你需要独处的时间和空间", "score": 4}
+                            ]
+                        },
+                        {
+                            id: 5,
+                            text: "当你们的兴趣爱好不同时，TA通常会...",
+                            options: [
+                                {"text": "要求你放弃自己的爱好，陪TA做喜欢的事", "score": 1},
+                                {"text": "偶尔陪你，但大部分时间坚持自己的爱好", "score": 2},
+                                {"text": "尊重你的爱好，也鼓励你尊重TA的爱好", "score": 4}
+                            ]
+                        }
+                    ]
+                },
+                {
+                    dimension: "沟通表达",
+                    questions: [
+                        {
+                            id: 6,
+                            text: "当TA对你有不满时，通常会如何表达？",
+                            options: [
+                                {"text": "突然爆发或冷战，让你摸不着头脑", "score": 1},
+                                {"text": "旁敲侧击地暗示，但不直接说明", "score": 2},
+                                {"text": "坦诚地说出感受和期望", "score": 4}
+                            ]
+                        },
+                        {
+                            id: 7,
+                            text: "当你向TA分享开心的事情时，TA会...",
+                            options: [
+                                {"text": "反应冷淡，似乎不太感兴趣", "score": 1},
+                                {"text": "礼貌回应，但不会深入交流", "score": 2},
+                                {"text": "真诚分享你的喜悦，表现出兴趣和支持", "score": 4}
+                            ]
+                        },
+                        {
+                            id: 8,
+                            text: "当你们计划未来时，TA通常会...",
+                            options: [
+                                {"text": "很少参与讨论，显得漠不关心", "score": 1},
+                                {"text": "被动回应你的提议，但没有自己的想法", "score": 2},
+                                {"text": "积极参与，提出自己的想法并认真考虑你的意见", "score": 4}
+                            ]
+                        },
+                        {
+                            id: 9,
+                            text: "当TA说错话或做错事时，通常会...",
+                            options: [
+                                {"text": "推卸责任，不肯承认错误", "score": 1},
+                                {"text": "勉强道歉，但显得很不情愿", "score": 2},
+                                {"text": "诚恳道歉，并努力改进", "score": 4}
+                            ]
+                        },
+                        {
+                            id: 10,
+                            text: "当你们意见不合时，TA通常会...",
+                            options: [
+                                {"text": "坚持己见，不愿妥协", "score": 1},
+                                {"text": "虽然妥协，但明显不高兴", "score": 2},
+                                {"text": "试图理解你的观点，寻找双方都能接受的解决方案", "score": 4}
+                            ]
+                        }
+                    ]
+                },
+                {
+                    dimension: "责任与承诺",
+                    questions: [
+                        {
+                            id: 11,
+                            text: "当你们共同制定的计划需要调整时，TA会...",
+                            options: [
+                                {"text": "随意改变，不考虑对你的影响", "score": 1},
+                                {"text": "虽然会通知你，但很少考虑你的意见", "score": 2},
+                                {"text": "与你商量，共同做出调整决定", "score": 4}
+                            ]
+                        },
+                        {
+                            id: 12,
+                            text: "当TA承诺要做某件事时，通常会...",
+                            options: [
+                                {"text": "经常忘记或无法兑现承诺", "score": 1},
+                                {"text": "尽力而为，但偶尔会食言", "score": 2},
+                                {"text": "认真履行，即使遇到困难也会想办法完成", "score": 4}
+                            ]
+                        },
+                        {
+                            id: 13,
+                            text: "当你们的关系面临挑战时，TA会...",
+                            options: [
+                                {"text": "首先考虑分手，逃避问题", "score": 1},
+                                {"text": "被动应对，缺乏积极解决问题的态度", "score": 2},
+                                {"text": "与你共同面对，努力解决问题", "score": 4}
+                            ]
+                        },
+                        {
+                            id: 14,
+                            text: "关于你们的未来，TA通常会...",
+                            options: [
+                                {"text": "很少提及，态度模糊", "score": 1},
+                                {"text": "偶尔讨论，但没有明确规划", "score": 2},
+                                {"text": "认真规划，并与你分享TA的想法和期望", "score": 4}
+                            ]
+                        },
+                        {
+                            id: 15,
+                            text: "当你需要帮助时，TA通常会...",
+                            options: [
+                                {"text": "找借口推脱，不愿意帮忙", "score": 1},
+                                {"text": "勉强帮忙，但显得很不耐烦", "score": 2},
+                                {"text": "积极提供支持，尽力帮助你", "score": 4}
+                            ]
+                        }
+                    ]
+                },
+                {
+                    dimension: "爱情保鲜",
+                    questions: [
+                        {
+                            id: 16,
+                            text: "随着关系稳定后，TA如何维持你们之间的感情？",
+                            options: [
+                                {"text": "变得越来越随意，不再用心", "score": 1},
+                                {"text": "偶尔会有一些表示，但频率越来越低", "score": 2},
+                                {"text": "持续用心经营，创造二人世界的机会", "score": 4}
+                            ]
+                        },
+                        {
+                            id: 17,
+                            text: "TA多久会为你们的关系制造一些小惊喜？",
+                            options: [
+                                {"text": "几乎从不，觉得没必要", "score": 1},
+                                {"text": "只在特殊节日才有表示", "score": 2},
+                                {"text": "经常会有小惊喜，比如突然送花或安排约会", "score": 4}
+                            ]
+                        },
+                        {
+                            id: 18,
+                            text: "当你们的相处模式变得固定时，TA会...",
+                            options: [
+                                {"text": "安于现状，不愿意改变", "score": 1},
+                                {"text": "偶尔提议改变，但很快又回到习惯", "score": 2},
+                                {"text": "主动尝试新的活动，保持关系的新鲜感", "score": 4}
+                            ]
+                        },
+                        {
+                            id: 19,
+                            text: "TA如何表达对你的欣赏和爱意？",
+                            options: [
+                                {"text": "很少表达，认为行动比言语重要", "score": 1},
+                                {"text": "偶尔会说'我爱你'，但缺乏具体内容", "score": 2},
+                                {"text": "经常具体地表达欣赏，让你感受到被重视", "score": 4}
+                            ]
+                        },
+                        {
+                            id: 20,
+                            text: "当你们有空闲时间时，TA通常会...",
+                            options: [
+                                {"text": "优先做自己的事情，很少主动安排二人活动", "score": 1},
+                                {"text": "虽然会陪你，但显得有些勉强", "score": 2},
+                                {"text": "积极规划二人时光，享受相处的每一刻", "score": 4}
+                            ]
+                        }
+                    ]
+                },
+                {
+                    dimension: "金钱观匹配",
+                    questions: [
+                        {
+                            id: 21,
+                            text: "当你们在消费观念上有分歧时，TA通常会...",
+                            options: [
+                                {"text": "坚持自己的消费方式，认为你不对", "score": 1},
+                                {"text": "表面妥协，但心里不满", "score": 2},
+                                {"text": "理性沟通，寻找双方都能接受的方案", "score": 4}
+                            ]
+                        },
+                        {
+                            id: 22,
+                            text: "关于你们的共同开销，TA通常会...",
+                            options: [
+                                {"text": "斤斤计较，分得非常清楚", "score": 1},
+                                {"text": "不太在意谁付得多，但很少主动承担", "score": 2},
+                                {"text": "根据双方经济状况灵活处理，重要的是公平", "score": 4}
+                            ]
+                        },
+                        {
+                            id: 23,
+                            text: "当你购买了一件较贵的物品时，TA的反应是...",
+                            options: [
+                                {"text": "指责你浪费钱，不考虑后果", "score": 1},
+                                {"text": "虽然不说，但显得不太高兴", "score": 2},
+                                {"text": "理解你的需求，尊重你的消费选择", "score": 4}
+                            ]
+                        },
+                        {
+                            id: 24,
+                            text: "关于财务管理，TA通常会...",
+                            options: [
+                                {"text": "对财务状况保密，不愿意分享", "score": 1},
+                                {"text": "偶尔会提到，但不会深入讨论", "score": 2},
+                                {"text": "愿意坦诚交流财务状况，共同规划", "score": 4}
+                            ]
+                        },
+                        {
+                            id: 25,
+                            text: "当你们需要为礼物或约会预算做决定时，TA会...",
+                            options: [
+                                {"text": "坚持自己的预算，不考虑你的意见", "score": 1},
+                                {"text": "虽然会协商，但最终还是按自己的想法来", "score": 2},
+                                {"text": "共同讨论，找到符合双方期望的预算方案", "score": 4}
+                            ]
+                        }
+                    ]
+                },
+                {
+                    dimension: "安全感供给",
+                    questions: [
+                        {
+                            id: 26,
+                            text: "当你感到不安或焦虑时，TA通常会...",
+                            options: [
+                                {"text": "不太在意，觉得你想太多", "score": 1},
+                                {"text": "简单安慰几句，但没有深入了解", "score": 2},
+                                {"text": "耐心倾听，给予情感支持和实际帮助", "score": 4}
+                            ]
+                        },
+                        {
+                            id: 27,
+                            text: "关于TA的行踪，TA通常会...",
+                            options: [
+                                {"text": "很少主动告知，让你猜测和担心", "score": 1},
+                                {"text": "偶尔会说，但不够详细", "score": 2},
+                                {"text": "主动分享行程，让你知道TA的情况", "score": 4}
+                            ]
+                        },
+                        {
+                            id: 28,
+                            text: "当你们发生争吵后，TA会...",
+                            options: [
+                                {"text": "长时间冷战，让你感到被忽视", "score": 1},
+                                {"text": "虽然和解，但不会解释或保证", "score": 2},
+                                {"text": "主动沟通，表达TA的感受和想法", "score": 4}
+                            ]
+                        },
+                        {
+                            id: 29,
+                            text: "当TA与异性朋友交往时，TA会...",
+                            options: [
+                                {"text": "不告诉你，或态度暧昧", "score": 1},
+                                {"text": "虽然会说，但不愿意多谈细节", "score": 2},
+                                {"text": "坦诚分享，尊重你的感受，保持适当距离", "score": 4}
+                            ]
+                        },
+                        {
+                            id: 30,
+                            text: "当你们讨论彼此的过去时，TA通常会...",
+                            options: [
+                                {"text": "避而不谈，或说谎隐瞒", "score": 1},
+                                {"text": "简单提及，但不深入", "score": 2},
+                                {"text": "坦诚相告，尊重彼此的过去", "score": 4}
+                            ]
+                        }
+                    ]
+                },
+                {
+                    dimension: "冲突解决",
+                    questions: [
+                        {
+                            id: 31,
+                            text: "当你们发生激烈争吵时，TA通常会...",
+                            options: [
+                                {"text": "口不择言，说一些伤人的话", "score": 1},
+                                {"text": "选择沉默，拒绝沟通", "score": 2},
+                                {"text": "尝试冷静下来，避免说出后悔的话", "score": 4}
+                            ]
+                        },
+                        {
+                            id: 32,
+                            text: "当冲突涉及到原则问题时，TA会...",
+                            options: [
+                                {"text": "寸步不让，必须按照TA的方式", "score": 1},
+                                {"text": "虽然妥协，但明显心有不甘", "score": 2},
+                                {"text": "坚持原则的同时，寻找双方都能接受的解决方案", "score": 4}
+                            ]
+                        },
+                        {
+                            id: 33,
+                            text: "当TA意识到自己在冲突中做错了，TA会...",
+                            options: [
+                                {"text": "不愿意承认，继续为自己辩护", "score": 1},
+                                {"text": "勉强承认，但不道歉", "score": 2},
+                                {"text": "诚恳道歉，并努力改正错误", "score": 4}
+                            ]
+                        },
+                        {
+                            id: 34,
+                            text: "当你们暂时无法解决冲突时，TA会...",
+                            options: [
+                                {"text": "将问题搁置，不再提及", "score": 1},
+                                {"text": "等待问题自行消失", "score": 2},
+                                {"text": "约定稍后再讨论，给彼此冷静的时间", "score": 4}
+                            ]
+                        },
+                        {
+                            id: 35,
+                            text: "当冲突解决后，TA通常会...",
+                            options: [
+                                {"text": "当作没发生过，不做任何总结", "score": 1},
+                                {"text": "简单总结，但不会反思未来如何避免", "score": 2},
+                                {"text": "共同复盘冲突原因，讨论如何避免类似问题", "score": 4}
+                            ]
+                        }
+                    ]
+                },
+                {
+                    dimension: "情绪觉察",
+                    questions: [
+                        {
+                            id: 36,
+                            text: "TA对自己的情绪状态通常...",
+                            options: [
+                                {"text": "不太清楚自己为什么情绪变化", "score": 1},
+                                {"text": "有时能意识到，但说不清楚原因", "score": 2},
+                                {"text": "能清晰识别自己的情绪，并理解背后的原因", "score": 4}
+                            ]
+                        },
+                        {
+                            id: 37,
+                            text: "当TA情绪不好时，通常会...",
+                            options: [
+                                {"text": "迁怒于你或其他人", "score": 1},
+                                {"text": "封闭自己，不与人交流", "score": 2},
+                                {"text": "坦诚表达情绪，并寻找健康的方式调节", "score": 4}
+                            ]
+                        },
+                        {
+                            id: 38,
+                            text: "TA如何察觉你的情绪变化？",
+                            options: [
+                                {"text": "很少注意到你的情绪变化", "score": 1},
+                                {"text": "有时能察觉，但反应不够及时", "score": 2},
+                                {"text": "敏锐地察觉你的情绪，并给予适当回应", "score": 4}
+                            ]
+                        },
+                        {
+                            id: 39,
+                            text: "当TA意识到自己的情绪影响到你们的关系时，TA会...",
+                            options: [
+                                {"text": "认为这是你的问题，不反思自己", "score": 1},
+                                {"text": "意识到问题，但不知道如何改变", "score": 2},
+                                {"text": "主动寻求改变，努力控制情绪对关系的影响", "score": 4}
+                            ]
+                        },
+                        {
+                            id: 40,
+                            text: "当你们面临压力时，TA通常会...",
+                            options: [
+                                {"text": "情绪失控，让情况变得更糟", "score": 1},
+                                {"text": "独自承受压力，不寻求帮助", "score": 2},
+                                {"text": "保持冷静，共同面对困难", "score": 4}
+                            ]
+                        }
+                    ]
+                }
+            ]
+        };
+
+        // DOM元素
+        const introPage = document.getElementById('intro-page');
+        const zodiacPage = document.getElementById('zodiac-page');
+        const testPage = document.getElementById('test-page');
+        const resultPage = document.getElementById('result-page');
+        const startSelfTestBtn = document.getElementById('start-self-test');
+        const startLoverTestBtn = document.getElementById('start-lover-test');
+        const prevBtn = document.getElementById('prev-btn');
+        const nextBtn = document.getElementById('next-btn');
+        const restartTestBtn = document.getElementById('restart-test');
+        const changeTestTypeBtn = document.getElementById('change-test-type');
+        const testTitle = document.getElementById('test-title');
+        const dimensionIndicator = document.getElementById('dimension-indicator');
+        const questionText = document.getElementById('question-text');
+        const optionsContainer = document.getElementById('options-container');
+        const questionProgress = document.getElementById('question-progress');
+        const progressFill = document.getElementById('progress-fill');
+        const overallScore = document.getElementById('overall-score');
+        const scoreDescription = document.getElementById('score-description');
+        const dimensionResults = document.getElementById('dimension-results');
+
+        // 测试状态
+        let currentTestType = 'self_test';
+        let currentQuestionIndex = 0;
+        let totalQuestions = 0;
+        let selectedAnswers = [];
+        let dimensionScores = {};
+        let overallResult = 0;
+        let selectedZodiac = null;
+        
+        // 星座数据 - 每个星座添加专属颜色
+        const zodiacData = [
+            { name: '白羊座', icon: 'fas fa-fire', dateRange: '3月21日-4月19日', color: '#805AD5' },
+            { name: '金牛座', icon: 'fas fa-bullseye', dateRange: '4月20日-5月20日', color: '#4ECDC4' },
+            { name: '双子座', icon: 'fas fa-gem', dateRange: '5月21日-6月21日', color: '#45B7D1' },
+            { name: '巨蟹座', icon: 'fas fa-home', dateRange: '6月22日-7月22日', color: '#FFA07A' },
+            { name: '狮子座', icon: 'fas fa-star', dateRange: '7月23日-8月22日', color: '#FFD93D' },
+            { name: '处女座', icon: 'fas fa-leaf', dateRange: '8月23日-9月22日', color: '#95E1D3' },
+            { name: '天秤座', icon: 'fas fa-balance-scale', dateRange: '9月23日-10月23日', color: '#F38181' },
+            { name: '天蝎座', icon: 'fas fa-heart-broken', dateRange: '10月24日-11月22日', color: '#7868E6' },
+            { name: '射手座', icon: 'fas fa-compass', dateRange: '11月23日-12月21日', color: '#FA709A' },
+            { name: '摩羯座', icon: 'fas fa-mountain', dateRange: '12月22日-1月19日', color: '#C7CEEA' },
+            { name: '水瓶座', icon: 'fas fa-tint', dateRange: '1月20日-2月18日', color: '#B5EAD7' },
+            { name: '双鱼座', icon: 'fas fa-fish', dateRange: '2月19日-3月20日', color: '#D8BFD8' }
+        ];
+        
+        // 星座恋爱心理解读数据 - 扩充版
+        const zodiacInterpretations = {
+            '白羊座': {
+                traits: ['热情直接', '充满活力', '喜欢主导', '缺乏耐心'],
+                strengths: '你天生散发着阳光般的热情，这种直接而真诚的特质让你在恋爱中极具吸引力。你勇于表达爱意，能够快速打破距离感，让伴侣感受到满满的活力与激情。',
+                challenges: '有时候你的行动可能比思考更快，偶尔会忽略伴侣细腻的情绪需求。试着慢下来，多倾听对方的感受，你的热情会因此变得更加温暖而持久。',
+                compatibility: '与射手座、狮子座等同样热情奔放的火象星座一拍即合，你们能一起创造充满活力的爱情故事。与巨蟹座、摩羯座等细腻稳定的星座相处时，需要多一些耐心和理解，彼此互补会让关系更加平衡。',
+                loveLanguage: '你的恋爱语言是行动与陪伴，喜欢用直接的方式表达关心，一起冒险、一起挑战新事物是你最享受的相处模式。',
+                emotionalValue: '你就像爱情里的小太阳，总能给伴侣带来积极向上的能量，让平凡的日子变得闪闪发光。'
+            },
+            '金牛座': {
+                traits: ['稳定可靠', '注重实际', '重视安全感', '固执己见'],
+                strengths: '你是爱情里最让人安心的存在，就像一棵扎根深厚的大树，给伴侣稳稳的依靠。你用实际行动诠释爱，一句温暖的问候、一顿亲手做的饭，都能让对方感受到你的用心。',
+                challenges: '你习惯了按部就班的节奏，面对变化时可能会有些犹豫。试着敞开心扉，接受爱情里的小惊喜，生活会因此增添更多色彩。',
+                compatibility: '与处女座、摩羯座等同样踏实稳重的土象星座默契十足，你们一起构建的爱情堡垒坚固而温馨。与双子座、水瓶座等思维活跃的星座相处时，需要多一些弹性，彼此学习会让关系更加丰富。',
+                loveLanguage: '你的恋爱语言是精心准备的礼物和实际的帮助，你相信真正的爱藏在生活的细节里，用行动比用言语更能表达你的深情。',
+                emotionalValue: '你给伴侣的安全感是无价的，在这个快节奏的世界里，你的稳定就像一盏明灯，让爱情始终保持温暖的温度。'
+            },
+            '双子座': {
+                traits: ['聪明伶俐', '善于沟通', '好奇心强', '容易善变'],
+                strengths: '你的脑袋里总是装满了奇思妙想，与你相处永远不会感到无聊。你善于用语言传递爱意，一句贴心的话语、一个有趣的故事，都能让伴侣感受到你的魅力。',
+                challenges: '你的兴趣和情绪可能会像风一样多变，偶尔会让伴侣摸不着头脑。试着多一些专注和耐心，让对方感受到你的真心与承诺。',
+                compatibility: '与天秤座、水瓶座等同样善于沟通的风象星座心灵相通，你们的对话永远充满惊喜与启发。与金牛座、天蝎座等专注深情的星座相处时，需要多一些稳定，彼此包容会让关系更加长久。',
+                loveLanguage: '你的恋爱语言是充满智慧的对话和分享，喜欢与伴侣交流想法、探讨世界，精神上的共鸣是你最渴望的连接。',
+                emotionalValue: '你就像爱情里的小精灵，总能为伴侣带来新鲜感和乐趣，让爱情永远保持着初恋般的活力。'
+            },
+            '巨蟹座': {
+                traits: ['温柔体贴', '情感丰富', '重视家庭', '敏感多疑'],
+                strengths: '你是天生的守护者，用细腻的心思照顾着伴侣的每一个情绪。你重视家庭和亲密关系，愿意为了爱情付出一切，让伴侣感受到家的温暖。',
+                challenges: '你的情绪就像潮汐一样起伏，偶尔会因为过度敏感而感到不安。试着多一些自我肯定，相信自己值得被爱，你的温柔会因此更加坚定。',
+                compatibility: '与天蝎座、双鱼座等同样情感丰富的水象星座心有灵犀，你们能深刻理解彼此的情绪世界。与白羊座、天秤座等直率开朗的星座相处时，需要多一些沟通，彼此理解会让关系更加和谐。',
+                loveLanguage: '你的恋爱语言是无微不至的关怀和情感的支持，喜欢用拥抱、安慰和陪伴来表达爱意，让伴侣感受到被珍视的温暖。',
+                emotionalValue: '你给伴侣的爱就像一碗温热的汤，虽然平凡却能温暖心灵，在疲惫时给人最贴心的慰藉。'
+            },
+            '狮子座': {
+                traits: ['自信大方', '领导力强', '喜欢被关注', '骄傲自负'],
+                strengths: '你身上散发着王者般的魅力，自信而大方，总能成为爱情里的焦点。你愿意为伴侣付出一切，用行动证明你的爱意，让对方感受到被重视的幸福。',
+                challenges: '有时候你的自尊心可能会阻碍你表达脆弱，偶尔会显得有些强势。试着放下骄傲，多一些柔软，你的爱会因此更加深刻动人。',
+                compatibility: '与白羊座、射手座等同样热情自信的火象星座相得益彰，你们一起创造的爱情故事充满激情与荣耀。与金牛座、摩羯座等踏实稳重的星座相处时，需要多一些耐心，彼此欣赏会让关系更加平衡。',
+                loveLanguage: '你的恋爱语言是充满仪式感的赞美和浪漫的惊喜，喜欢用华丽的方式表达爱意，让伴侣感受到被崇拜的幸福。',
+                emotionalValue: '你就像爱情里的国王/女王，用你的热情和慷慨为伴侣撑起一片天空，让对方在你的爱里尽情绽放。'
+            },
+            '处女座': {
+                traits: ['细心周到', '追求完美', '责任感强', '吹毛求疵'],
+                strengths: '你是爱情里的完美主义者，用细致的心思经营着每一段关系。你善于发现问题并解决问题，让爱情始终保持着健康的状态。',
+                challenges: '有时候你对完美的追求可能会给伴侣带来压力，偶尔会显得有些挑剔。试着多一些包容和接纳，欣赏爱情里的不完美，你会发现生活更加美好。',
+                compatibility: '与金牛座、摩羯座等同样注重细节的土象星座配合默契，你们一起构建的爱情世界整洁而有序。与双子座、射手座等自由随性的星座相处时，需要多一些弹性，彼此学习会让关系更加丰富。',
+                loveLanguage: '你的恋爱语言是精心的服务和细致的关怀，喜欢用实际行动照顾伴侣的生活，让对方感受到你的用心与责任。',
+                emotionalValue: '你给伴侣的爱就像一杯精心调制的茶，虽然清淡却回味无穷，在平凡的日子里给人最持久的温暖。'
+            },
+            '天秤座': {
+                traits: ['优雅和谐', '善于协调', '重视公平', '犹豫不决'],
+                strengths: '你天生就懂得平衡的艺术，用优雅的方式处理着爱情里的各种关系。你重视公平与和谐，总能让伴侣感受到被尊重的幸福。',
+                challenges: '有时候你的犹豫不决可能会让伴侣感到困惑，偶尔会显得有些优柔寡断。试着相信自己的直觉，勇敢做出选择，你的爱会因此更加坚定有力。',
+                compatibility: '与双子座、水瓶座等同样追求和谐的风象星座心灵相通，你们的相处充满了优雅与智慧。与天蝎座、双鱼座等情感浓烈的星座相处时，需要多一些决断，彼此理解会让关系更加深入。',
+                loveLanguage: '你的恋爱语言是充满美感的陪伴和平衡的关系，喜欢与伴侣一起享受美好的事物，用和谐的方式表达爱意。',
+                emotionalValue: '你就像爱情里的艺术家，用你的优雅和智慧为伴侣创造一个充满美感的世界，让爱情始终保持着优雅的姿态。'
+            },
+            '天蝎座': {
+                traits: ['深情专一', '洞察力强', '神秘性感', '占有欲强'],
+                strengths: '你一旦爱上就会全心全意，用深沉的情感包围着伴侣。你的洞察力极强，总能看穿对方的心思，给伴侣最贴心的理解和支持。',
+                challenges: '你的占有欲和嫉妒心可能会让伴侣感到压抑，偶尔会显得有些神秘莫测。试着多一些信任和开放，让爱情在阳光下自由生长，你会发现爱更加纯粹。',
+                compatibility: '与巨蟹座、双鱼座等同样深情的水象星座灵魂契合，你们的爱情充满了深度与激情。与金牛座、摩羯座等踏实稳重的星座相处时，需要多一些透明度，彼此信任会让关系更加坚固。',
+                loveLanguage: '你的恋爱语言是充满激情的亲密和深刻的情感连接，喜欢与伴侣分享内心最深处的秘密，用灵魂的契合表达爱意。',
+                emotionalValue: '你给伴侣的爱就像一杯浓郁的咖啡，虽然苦涩却充满了力量，在寒冷的日子里给人最热烈的温暖。'
+            },
+            '射手座': {
+                traits: ['乐观开朗', '热爱自由', '坦诚直率', '缺乏耐心'],
+                strengths: '你的内心充满了对自由和冒险的向往，与你相处永远充满了惊喜和乐趣。你坦诚直率，从不掩饰自己的想法，让伴侣感受到你的真诚与活力。',
+                challenges: '你对自由的追求可能会让伴侣感到不安，偶尔会因为缺乏耐心而忽略对方的感受。试着多一些停留和陪伴，让对方感受到你的牵挂与责任。',
+                compatibility: '与白羊座、狮子座等同样热爱自由的火象星座一拍即合，你们一起探索世界的旅程充满了激情与欢乐。与巨蟹座、天蝎座等情感细腻的星座相处时，需要多一些耐心，彼此包容会让关系更加长久。',
+                loveLanguage: '你的恋爱语言是充满冒险的陪伴和坦诚的交流，喜欢与伴侣一起探索未知的世界，用行动和话语表达你的爱意。',
+                emotionalValue: '你就像爱情里的冒险家，总能为伴侣带来新的体验和视角，让爱情永远保持着探索的乐趣和活力。'
+            },
+            '摩羯座': {
+                traits: ['稳重踏实', '目标明确', '责任感强', '过于严肃'],
+                strengths: '你是爱情里的务实主义者，用实际的行动和长远的规划为伴侣创造美好的未来。你责任感极强，一旦承诺就会全力以赴，让伴侣感受到满满的安全感。',
+                challenges: '你可能会因为过于专注于目标而忽略了爱情里的小浪漫，偶尔会显得有些严肃。试着多一些放松和表达，让对方感受到你的温柔与爱意。',
+                compatibility: '与金牛座、处女座等同样务实的土象星座默契十足，你们一起构建的未来坚实而美好。与双子座、射手座等自由随性的星座相处时，需要多一些弹性，彼此学习会让生活更加丰富。',
+                loveLanguage: '你的恋爱语言是可靠的承诺和长远的规划，你相信真正的爱需要用时间和努力去经营，用行动证明你的责任与担当。',
+                emotionalValue: '你给伴侣的安全感和稳定感是最珍贵的礼物，在这个多变的世界里，你的坚持就像一座灯塔，让爱情始终朝着幸福的方向前进。'
+            },
+            '水瓶座': {
+                traits: ['独立创新', '思想开放', '重视友谊', '情感疏离'],
+                strengths: '你是爱情里的创新者，总是用独特的方式表达爱意。你思想开放，尊重伴侣的独立性，让爱情在自由的氛围中茁壮成长。',
+                challenges: '你的情感有时会显得有些疏离，偶尔会让伴侣感到难以接近。试着多一些情感的表达，让对方感受到你的真心与关怀。',
+                compatibility: '与双子座、天秤座等同样思想开放的风象星座志同道合，你们的爱情充满了创新与启发。与巨蟹座、天蝎座等情感细腻的星座相处时，需要多一些情感的连接，彼此理解会让关系更加深入。',
+                loveLanguage: '你的恋爱语言是尊重对方的独立性和充满创意的惊喜，喜欢与伴侣保持精神上的连接，用独特的方式表达爱意。',
+                emotionalValue: '你就像爱情里的哲学家，总能为伴侣带来新的视角和思考，让爱情在思想的碰撞中不断升华，保持着永恒的新鲜感。'
+            },
+            '双鱼座': {
+                traits: ['温柔浪漫', '富有想象力', '善解人意', '情绪化'],
+                strengths: '你是天生的浪漫主义者，用丰富的想象力为伴侣创造一个充满梦幻的爱情世界。你善解人意，总能感受到对方的情绪，给伴侣最贴心的安慰和支持。',
+                challenges: '你的情绪可能会像水一样起伏不定，偶尔会因为过度敏感而感到受伤。试着多一些自我保护和理性，让爱情在现实与梦幻之间找到平衡。',
+                compatibility: '与巨蟹座、天蝎座等同样浪漫的水象星座心灵相通，你们的爱情充满了深度与情感。与白羊座、摩羯座等务实理性的星座相处时，需要多一些现实感，彼此互补会让关系更加稳定。',
+                loveLanguage: '你的恋爱语言是充满浪漫的想象和深情的陪伴，喜欢用诗意的方式表达爱意，让伴侣感受到被爱包围的幸福。',
+                emotionalValue: '你给伴侣的爱就像一首优美的诗，虽然虚幻却充满了力量，在平凡的日子里给人最温暖的慰藉和最美好的憧憬。'
+            }
+        };
+
+        // 辅助函数：切换页面
+        function switchPage(pageName) {
+            // 隐藏所有页面
+            introPage.classList.add('hidden');
+            zodiacPage.classList.add('hidden');
+            testPage.classList.add('hidden');
+            resultPage.classList.add('hidden');
+            
+            // 显示指定页面
+            switch(pageName) {
+                case 'intro':
+                    introPage.classList.remove('hidden');
+                    break;
+                case 'zodiac':
+                    zodiacPage.classList.remove('hidden');
+                    break;
+                case 'test':
+                    testPage.classList.remove('hidden');
+                    break;
+                case 'result':
+                    resultPage.classList.remove('hidden');
+                    break;
+            }
+        }
+        
+        // 初始化测试
+        function initTest(testType) {
+            currentTestType = testType;
+            currentQuestionIndex = 0;
+            selectedAnswers = [];
+            dimensionScores = {};
+            
+            // 获取测试数据
+            const test = extendedTestData[testType];
+            
+            // 计算总题目数
+            totalQuestions = 0;
+            test.forEach(dimension => {
+                totalQuestions += dimension.questions.length;
+                dimensionScores[dimension.dimension] = 0;
+            });
+            
+            // 更新页面标题
+            testTitle.textContent = testType === 'self_test' ? '自我测试' : '恋人测试';
+            
+            // 切换页面：先显示星座选择页面
+            switchPage('zodiac');
+        }
+        
+        // 开始测试（从星座选择页面进入）
+        function startTestFromZodiac() {
+            // 切换页面到测试页
+            switchPage('test');
+            
+            // 初始化进度条为0%
+            progressFill.style.width = '0%';
+            questionProgress.textContent = '1/10';
+            
+            // 然后显示第一个问题
+            showQuestion();
+        }
+
+        // 显示当前问题
+        function showQuestion() {
+            // 添加调试日志
+            console.log('showQuestion函数被调用');
+            console.log('当前测试类型:', currentTestType);
+            console.log('当前问题索引:', currentQuestionIndex);
+            console.log('总问题数:', totalQuestions);
+            
+            // 获取当前测试数据
+            const test = extendedTestData[currentTestType];
+            console.log('测试数据:', test);
+            
+            // 找到当前问题所在的维度和索引
+            let dimensionIndex = 0;
+            let questionInDimensionIndex = 0;
+            let questionCount = 0;
+            
+            for (let i = 0; i < test.length; i++) {
+                if (currentQuestionIndex < questionCount + test[i].questions.length) {
+                    dimensionIndex = i;
+                    questionInDimensionIndex = currentQuestionIndex - questionCount;
+                    break;
+                }
+                questionCount += test[i].questions.length;
+            }
+            
+            console.log('维度索引:', dimensionIndex);
+            console.log('维度内问题索引:', questionInDimensionIndex);
+            
+            // 获取当前问题
+            const currentDimension = test[dimensionIndex];
+            const currentQuestion = currentDimension.questions[questionInDimensionIndex];
+            
+            // 更新页面内容
+            dimensionIndicator.textContent = `维度：${currentDimension.dimension}`;
+            questionText.textContent = currentQuestion.text;
+            questionProgress.textContent = `${currentQuestionIndex + 1}/${totalQuestions}`;
+            progressFill.style.width = `${((currentQuestionIndex + 1) / totalQuestions) * 100}%`;
+            
+            // 清空并生成选项
+            optionsContainer.innerHTML = '';
+            currentQuestion.options.forEach((option, index) => {
+                const optionCard = document.createElement('div');
+                optionCard.className = `option-card ${selectedAnswers[currentQuestionIndex] === index ? 'selected' : ''}`;
+                optionCard.innerHTML = `
+                    <div class="flex items-center">
+                        <div class="w-6 h-6 rounded-full border-2 ${selectedAnswers[currentQuestionIndex] === index ? 'border-[#805AD5] bg-[#805AD5] text-white' : 'border-gray-300'} flex items-center justify-center mr-3">
+                            ${selectedAnswers[currentQuestionIndex] === index ? '<i class="fas fa-check text-xs"></i>' : ''}
+                        </div>
+                        <span>${option.text}</span>
+                    </div>
+                `;
+                optionCard.addEventListener('click', () => {
+                    selectedAnswers[currentQuestionIndex] = index;
+                    showQuestion(); // 重新渲染以更新选中状态
+                });
+                optionsContainer.appendChild(optionCard);
+            });
+            
+            // 更新导航按钮状态
+            prevBtn.classList.toggle('hidden', currentQuestionIndex === 0);
+            nextBtn.textContent = currentQuestionIndex === totalQuestions - 1 ? '提交测试' : '下一题';
+            nextBtn.innerHTML = currentQuestionIndex === totalQuestions - 1 ? 
+                '提交测试 <i class="fas fa-check ml-2"></i>' : 
+                '下一题 <i class="fas fa-arrow-right ml-2"></i>';
+        }
+
+        // 计算测试结果
+        function calculateResults() {
+            const test = extendedTestData[currentTestType];
+            let totalScore = 0;
+            let maxPossibleScore = 0;
+            
+            // 计算每个维度的得分
+            let questionIndex = 0;
+            test.forEach(dimension => {
+                let dimensionScore = 0;
+                let dimensionMaxScore = 0;
+                
+                dimension.questions.forEach(question => {
+                    const selectedOptionIndex = selectedAnswers[questionIndex] || 0;
+                    const selectedScore = question.options[selectedOptionIndex].score;
+                    
+                    // 由于评分系统是1-2-4，需要将其映射到0-50-100的分布
+                    // 确保3个选项与雷达图的精准匹配
+                    let normalizedScore;
+                    if (selectedScore === 1) normalizedScore = 0;
+                    else if (selectedScore === 2) normalizedScore = 50;
+                    else if (selectedScore === 4) normalizedScore = 100;
+                    
+                    dimensionScore += normalizedScore;
+                    dimensionMaxScore += 100; // 每个问题的最大可能分数是100
+                    questionIndex++;
+                });
+                
+                // 计算平均分，范围0-100
+                const percentage = dimensionMaxScore > 0 ? Math.round(dimensionScore / (dimensionMaxScore / 100)) : 0;
+                
+                dimensionScores[dimension.dimension] = {
+                    score: dimensionScore,
+                    maxScore: dimensionMaxScore,
+                    percentage: percentage
+                };
+                
+                totalScore += dimensionScore;
+                maxPossibleScore += dimensionMaxScore;
+            });
+            
+            // 计算总体得分
+            overallResult = Math.round(totalScore / (maxPossibleScore / 100));
+            
+            return {
+                overallResult,
+                dimensionScores
+            };
+        }
+
+        // 显示测试结果
+        function showResults() {
+            const results = calculateResults();
+            
+            // 更新总体得分
+            const scoreElement = document.getElementById('score-value');
+            scoreElement.textContent = '0';
+            
+            // 更新得分等级
+            const scoreLevelElement = document.getElementById('score-level');
+            
+            // 更新评分范围条形图
+            const scoreRangeFillElement = document.getElementById('score-range-fill');
+            
+            // 数字动画
+            let currentScore = 0;
+            const scoreInterval = setInterval(() => {
+                currentScore += 5;
+                if (currentScore >= results.overallResult) {
+                    currentScore = results.overallResult;
+                    clearInterval(scoreInterval);
+                }
+                scoreElement.textContent = currentScore;
+                
+                // 更新评分范围条形图
+                scoreRangeFillElement.style.width = currentScore + '%';
+                
+                // 更新得分等级
+                let level = '评估中';
+                let levelClass = 'bg-pink-100 text-pink-700';
+                
+                if (currentScore <= 20) {
+                    level = '初学乍练';
+                    levelClass = 'bg-orange-100 text-orange-700';
+                } else if (currentScore <= 40) {
+                    level = '仍需努力';
+                    levelClass = 'bg-gray-100 text-gray-700';
+                } else if (currentScore <= 60) {
+                    level = '良好基础';
+                    levelClass = 'bg-yellow-100 text-yellow-700';
+                } else if (currentScore <= 85) {
+                    level = '值得信赖';
+                    levelClass = 'bg-blue-100 text-blue-700';
+                } else if (currentScore <= 95) {
+                    level = '近乎完美';
+                    levelClass = 'bg-purple-100 text-purple-700';
+                } else {
+                    level = '理想伴侣';
+                    levelClass = 'bg-pink-100 text-pink-700';
+                }
+                
+                scoreLevelElement.textContent = level;
+                scoreLevelElement.className = `mt-2 inline-block px-6 py-2 ${levelClass} font-semibold rounded-full`;
+            }, 50);
+            
+            // 更新得分描述标题
+            const maturityScoreTitle = document.getElementById('maturity-score-title');
+            maturityScoreTitle.textContent = currentTestType === 'self_test' ? '你的恋爱心理成熟度得分' : 'TA的恋爱心理成熟度得分';
+            
+            // 更新得分描述
+            let description = '';
+            if (results.overallResult > 95) {
+                description = currentTestType === 'self_test' 
+                    ? '神仙伴侣本人！你的恋爱成熟度几乎满分，是让人羡慕的范本🏆'
+                    : '天选伴侣！TA的恋爱成熟度拉满，请一定好好珍惜🏆';
+            } else if (results.overallResult > 85) {
+                description = currentTestType === 'self_test'
+                    ? '近乎完美的伴侣样本，你让恋爱这件事变得如此美好🌟'
+                    : 'TA在恋爱中很靠谱！成熟稳重，是让人安心的存在。';
+            } else if (results.overallResult > 60) {
+                description = currentTestType === 'self_test'
+                    ? '你就是那种恋爱界的"六边形战士"！懂得经营关系，分寸感超棒💖'
+                    : 'TA是那种让人一直在一起的伴侣，相处自在又暖心💕，是可以依靠的对象💖';
+            } else if (results.overallResult > 40) {
+                description = currentTestType === 'self_test'
+                    ? '你就是那种让人"相处不累"的理想型！已经建立了靠谱的恋爱基础，继续加油呀✨'
+                    : 'TA已经建立了靠谱的恋爱基础，是一个值得信赖的伴侣。';
+            } else if (results.overallResult > 20) {
+                description = currentTestType === 'self_test'
+                    ? '你在关系中慢慢成长，偶尔的磕绊都是爱情的必修课，保持耐心就好🌱'
+                    : 'TA在关系中持续成长中，多给TA一些鼓励和支持吧💖';
+            } else {
+                description = currentTestType === 'self_test'
+                    ? '初入恋爱的你，还在探索爱与被爱的边界，这份青涩也是珍贵的开始🌸'
+                    : 'TA在恋爱中还是个"萌新"，需要你多一点耐心和引导哦🌼';
+            }
+            scoreDescription.textContent = description;
+            
+            // 生成维度结果 - 已注释掉，不再显示
+            // dimensionResults.innerHTML = '';
+            // Object.entries(results.dimensionScores).forEach(([dimension, data]) => {
+            //     const dimensionCard = document.createElement('div');
+            //     dimensionCard.className = 'dimension-card';
+            //     dimensionCard.innerHTML = `
+            //         <h4 class="text-lg font-semibold text-purple-700 mb-2">${dimension}</h4>
+            //         <div class="flex justify-between mb-1">
+            //             <span class="text-sm text-gray-600">得分</span>
+            //             <span class="text-sm font-medium text-purple-600">${data.score}/${data.maxScore} (${data.percentage}%)</span>
+            //         </div>
+            //         <div class="progress-bar mb-3">
+            //             <div class="progress-fill" style="width: ${data.percentage}%;"></div>
+            //         </div>
+            //     `;
+            //     dimensionResults.appendChild(dimensionCard);
+            // });
+            
+            // 获取新添加的模块元素
+            const explanationContent = document.getElementById('explanation-content');
+            
+            // 分析维度得分，找出高得分、潜力领域和成长空间
+            const highScoreDimensions = [];
+            const potentialDimensions = [];
+            const growthDimensions = [];
+            Object.entries(results.dimensionScores).forEach(([dimension, data]) => {
+                if (data.percentage >= 70) {
+                    highScoreDimensions.push(dimension);
+                } else if (data.percentage >= 50) {
+                    potentialDimensions.push(dimension);
+                } else {
+                    growthDimensions.push(dimension);
+                }
+            });
+            
+            // 生成各维度分类文本
+            const highScoreText = highScoreDimensions.length > 0 ? highScoreDimensions.join('、') : '无明显高得分维度';
+            const potentialText = potentialDimensions.length > 0 ? potentialDimensions.join('、') : '无明显潜力领域';
+            const growthText = growthDimensions.length > 0 ? growthDimensions.join('、') : '无明显需要提升的维度';
+            
+            // 生成结果解释
+            let explanation = '';
+            let levelText = '';
+            let levelDescription = '';
+            let dimensionAnalysis = '';
+            
+            // 根据得分区间生成精准的等级描述
+            if (results.overallResult <= 20) {
+                levelText = '初学乍练';
+                levelDescription = currentTestType === 'self_test' ? 
+                    '初入恋爱的你，还在探索爱与被爱的边界。你可能会在关系中感到迷茫，有时甚至会困惑于自己的感受与需求——这完全正常！这份青涩与好奇，正是爱情最珍贵的开始🌸' : 
+                    'TA在恋爱中还是个“萌新”，可能不太擅长表达情感，也不太清楚如何处理关系中的小矛盾。TA需要的不是指责，而是你的耐心引导和温暖包容哦🌼';
+            } else if (results.overallResult <= 40) {
+                levelText = '仍需努力';
+                levelDescription = currentTestType === 'self_test' ? 
+                    '你在恋爱中已经迈出了第一步，但仍有成长空间。有时会因为缺乏经验而产生误解或摩擦，不过没关系，每一次经历都是学习的机会🌱' : 
+                    'TA在恋爱中还在学习阶段，可能偶尔会显得有些笨拙或考虑不周。多给TA一些时间和鼓励，TA会逐渐成长💖';
+            } else if (results.overallResult <= 60) {
+                levelText = '良好基础';
+                levelDescription = currentTestType === 'self_test' ? 
+                    '你已经建立了良好的恋爱基础！能够理解关系中的基本平衡，也愿意为对方付出。继续保持并提升，你会成为更好的伴侣✨' : 
+                    'TA已经具备了良好的恋爱基础！TA懂得尊重对方，也能表达自己的需求，是一个值得交往的对象💞';
+            } else if (results.overallResult <= 85) {
+                levelText = '值得信赖';
+                levelDescription = currentTestType === 'self_test' ? 
+                    '你在恋爱中表现出了较高的成熟度！能够平衡亲密与独立，理性沟通并共情对方。你是那种让人感到安心的伴侣💖' : 
+                    'TA是一个值得信赖的伴侣！TA懂得经营关系，既能给予温暖陪伴，又能保持适当距离。和TA在一起会感到很舒服💕';
+            } else if (results.overallResult <= 95) {
+                levelText = '近乎完美';
+                levelDescription = currentTestType === 'self_test' ? 
+                    '你简直是恋爱中的“模范生”！深谙亲密关系的经营之道，能够轻松应对各种挑战。你的成熟让爱情更加美好🌟' : 
+                    'TA在恋爱中近乎完美！成熟稳重，善解人意，是很多人羡慕的理想伴侣。一定要好好珍惜✨';
+            } else {
+                levelText = '理想伴侣';
+                levelDescription = currentTestType === 'self_test' ? 
+                    '神仙伴侣本人就是你！你的恋爱成熟度几乎满分，懂得如何在关系中既保持独立又相互依赖，既坚持自我又尊重对方。研究表明，具备这种“关系弹性”的人，更容易拥有长久幸福的亲密关系🏆' : 
+                    '天选伴侣！TA的恋爱成熟度堪称教科书级别的存在，既有温柔包容的态度，又有理性处理问题的能力。这样的伴侣，值得你用一生去珍惜和守护💞';
+            }
+            
+            // 创建所有维度的详细描述，包括闪光点、潜力领域和成长空间
+            const dimensionDetails = {
+                '边界感平衡': {
+                    shine: {
+                        title: '✨ 超棒边界感',
+                        description: '你在亲密与独立间找到完美平衡',
+                        points: [
+                            '懂得尊重彼此的个人空间',
+                            '不过度依赖也不过分疏离',
+                            '让关系保持呼吸感与舒适度',
+                            '这是健康长久关系的黄金法则'
+                        ],
+                        color: 'bg-gradient-to-br from-pink-50 to-rose-50',
+                        icon: '🌸',
+                        borderColor: 'border-pink-300'
+                    },
+                    potential: {
+                        title: '✨ 边界感潜力股',
+                        description: '你已经开始理解亲密与独立的平衡',
+                        points: [
+                            '偶尔会感受到距离的重要性',
+                            '有时也能给彼此留出空间',
+                            '只要稍加留意，就能掌握边界感的艺术',
+                            '这将让你的关系更加舒适自在'
+                        ],
+                        color: 'bg-gradient-to-br from-blue-50 to-cyan-50',
+                        icon: '🌱',
+                        borderColor: 'border-blue-300'
+                    },
+                    growth: {
+                        title: '🌱 边界感成长空间',
+                        description: '探索亲密与独立的平衡，让关系更健康',
+                        points: [
+                            '尝试观察伴侣的需求信号',
+                            '学会说"我需要一点时间"',
+                            '理解爱需要距离来滋养',
+                            '慢慢来，你会找到最适合你们的相处方式'
+                        ],
+                        color: 'bg-gradient-to-br from-yellow-50 to-amber-50',
+                        icon: '💛',
+                        borderColor: 'border-yellow-300'
+                    }
+                },
+                '沟通表达': {
+                    shine: {
+                        title: '✨ 温暖沟通力',
+                        description: '你是天生的情感沟通专家',
+                        points: [
+                            '用温柔的方式表达真实感受',
+                            '擅长倾听并给予积极回应',
+                            '能让对方感受到被理解与重视',
+                            '是关系中的"情感桥梁"'
+                        ],
+                        color: 'bg-gradient-to-br from-purple-50 to-indigo-50',
+                        icon: '💬',
+                        borderColor: 'border-purple-300'
+                    },
+                    potential: {
+                        title: '✨ 沟通潜力者',
+                        description: '你的沟通天赋正在萌芽',
+                        points: [
+                            '有时能准确表达自己的感受',
+                            '愿意倾听伴侣的想法',
+                            '只要多练习，沟通会成为你的强项',
+                            '你的努力会让关系更加亲密'
+                        ],
+                        color: 'bg-gradient-to-br from-green-50 to-emerald-50',
+                        icon: '🎤',
+                        borderColor: 'border-green-300'
+                    },
+                    growth: {
+                        title: '🌱 沟通成长空间',
+                        description: '学习温柔表达，让爱流动得更顺畅',
+                        points: [
+                            '试着用"我"开头表达感受',
+                            '倾听时放下手机，用心陪伴',
+                            '给伴侣回应，让TA知道你在听',
+                            '每一次沟通都是爱的练习'
+                        ],
+                        color: 'bg-gradient-to-br from-purple-50 to-indigo-50',
+                        icon: '💌',
+                        borderColor: 'border-purple-300'
+                    }
+                },
+                '责任与承诺': {
+                    shine: {
+                        title: '✨ 深度责任感',
+                        description: '你的认真让关系充满安全感',
+                        points: [
+                            '对感情持有庄重的承诺',
+                            '言出必行，用行动证明心意',
+                            '让对方感受到被珍视与依靠',
+                            '是值得托付的可靠伴侣'
+                        ],
+                        color: 'bg-gradient-to-br from-purple-50 to-indigo-50',
+                        icon: '🛡️',
+                        borderColor: 'border-purple-300'
+                    },
+                    potential: {
+                        title: '✨ 责任感潜力股',
+                        description: '你的责任心正在慢慢展现',
+                        points: [
+                            '有时会为关系着想',
+                            '愿意承担一些责任',
+                            '你的努力会让伴侣感到安心',
+                            '继续成长，你会成为更可靠的人'
+                        ],
+                        color: 'bg-gradient-to-br from-purple-50 to-indigo-50',
+                        icon: '📝',
+                        borderColor: 'border-purple-300'
+                    },
+                    growth: {
+                        title: '🌱 责任感成长空间',
+                        description: '小行动积累大信任，让关系更稳固',
+                        points: [
+                            '从小事做起，说到做到',
+                            '多关心伴侣的需求',
+                            '一起规划未来，让TA看到你的认真',
+                            '责任不是负担，而是爱的表达'
+                        ],
+                        color: 'bg-gradient-to-br from-purple-50 to-indigo-50',
+                        icon: '🤝',
+                        borderColor: 'border-purple-300'
+                    }
+                },
+                '爱情保鲜': {
+                    shine: {
+                        title: '✨ 超强爱情保鲜力',
+                        description: '你让平凡日子闪闪发光',
+                        points: [
+                            '懂得为关系注入仪式感',
+                            '创造小惊喜保持生活温度',
+                            '在日常细节中传递爱意',
+                            '让爱情始终保持鲜活状态'
+                        ],
+                        color: 'bg-gradient-to-br from-purple-50 to-indigo-50',
+                        icon: '🎨',
+                        borderColor: 'border-purple-300'
+                    },
+                    potential: {
+                        title: '✨ 爱情保鲜潜力者',
+                        description: '你有一颗浪漫的心等待绽放',
+                        points: [
+                            '偶尔会想到为伴侣准备惊喜',
+                            '记得重要的日子',
+                            '只要多花点心思，就能让关系充满新鲜感',
+                            '你的用心会让对方感到被爱'
+                        ],
+                        color: 'bg-gradient-to-br from-purple-50 to-indigo-50',
+                        icon: '🎁',
+                        borderColor: 'border-purple-300'
+                    },
+                    growth: {
+                        title: '🌱 爱情保鲜成长空间',
+                        description: '用心经营，让爱情持续保鲜',
+                        points: [
+                            '尝试写一张小纸条表达爱意',
+                            '一起做件从未做过的事',
+                            '偶尔给对方一个拥抱或亲吻',
+                            '爱情需要仪式感，更需要你的用心'
+                        ],
+                        color: 'bg-gradient-to-br from-purple-50 to-indigo-50',
+                        icon: '💫',
+                        borderColor: 'border-purple-300'
+                    }
+                },
+                '金钱观匹配': {
+                    shine: {
+                        title: '✨ 成熟金钱观',
+                        description: '理性与温暖并存的财务智慧',
+                        points: [
+                            '在金钱问题上理性成熟',
+                            '懂得共同规划未来财务',
+                            '尊重彼此的消费习惯',
+                            '让物质成为感情的助力而非阻力'
+                        ],
+                        color: 'bg-gradient-to-br from-purple-50 to-indigo-50',
+                        icon: '💰',
+                        borderColor: 'border-purple-300'
+                    },
+                    potential: {
+                        title: '✨ 金钱观潜力股',
+                        description: '你的财务智慧正在成长',
+                        points: [
+                            '愿意和伴侣讨论金钱问题',
+                            '尝试理解对方的消费观念',
+                            '只要多沟通，就能找到金钱观的平衡点',
+                            '这将让你们的未来更有保障'
+                        ],
+                        color: 'bg-gradient-to-br from-purple-50 to-indigo-50',
+                        icon: '📊',
+                        borderColor: 'border-purple-300'
+                    },
+                    growth: {
+                        title: '🌱 金钱观成长空间',
+                        description: '学习共同规划，让金钱为爱情服务',
+                        points: [
+                            '尝试一起制定小目标',
+                            '尊重彼此的消费选择',
+                            '记得偶尔为对方准备小礼物',
+                            '金钱不是衡量爱的标准，但可以表达爱'
+                        ],
+                        color: 'bg-gradient-to-br from-purple-50 to-indigo-50',
+                        icon: '💚',
+                        borderColor: 'border-purple-300'
+                    }
+                },
+                '安全感供给': {
+                    shine: {
+                        title: '✨ 安全感充电宝',
+                        description: '你的存在就是最大的安心',
+                        points: [
+                            '能提供稳定的情绪支持',
+                            '让对方感受到被包容与接纳',
+                            '是感情中的"安全港湾"',
+                            '给予彼此足够的信任与自由'
+                        ],
+                        color: 'bg-gradient-to-br from-purple-50 to-indigo-50',
+                        icon: '🧡',
+                        borderColor: 'border-purple-300'
+                    },
+                    potential: {
+                        title: '✨ 安全感潜力者',
+                        description: '你正在学习成为对方的依靠',
+                        points: [
+                            '有时能感受到伴侣的不安',
+                            '愿意给予安慰和支持',
+                            '只要多关注对方的情绪，就能成为更可靠的伴侣',
+                            '你的陪伴就是最好的安全感'
+                        ],
+                        color: 'bg-gradient-to-br from-purple-50 to-indigo-50',
+                        icon: '🤗',
+                        borderColor: 'border-purple-300'
+                    },
+                    growth: {
+                        title: '🌱 安全感成长空间',
+                        description: '学习成为彼此的安全港湾',
+                        points: [
+                            '多表达"我在"和"我支持你"',
+                            '兑现你的承诺，建立信任',
+                            '倾听对方的担忧，不急于解决',
+                            '安全感是慢慢建立的，给自己时间'
+                        ],
+                        color: 'bg-gradient-to-br from-purple-50 to-indigo-50',
+                        icon: '🏠',
+                        borderColor: 'border-purple-300'
+                    }
+                },
+                '冲突解决': {
+                    shine: {
+                        title: '✨ 智慧冲突管理',
+                        description: '你让争吵成为成长的契机',
+                        points: [
+                            '用建设性方式处理分歧',
+                            '不翻旧账，聚焦解决问题',
+                            '懂得妥协与相互理解',
+                            '让关系在挑战中更加坚固'
+                        ],
+                        color: 'bg-gradient-to-br from-purple-50 to-indigo-50',
+                        icon: '🔧',
+                        borderColor: 'border-purple-300'
+                    },
+                    potential: {
+                        title: '✨ 冲突解决潜力股',
+                        description: '你正在学习用爱化解矛盾',
+                        points: [
+                            '偶尔能控制自己的情绪',
+                            '愿意和伴侣沟通解决问题',
+                            '只要多练习，就能成为冲突解决的高手',
+                            '每一次争吵都是了解彼此的机会'
+                        ],
+                        color: 'bg-gradient-to-br from-purple-50 to-indigo-50',
+                        icon: '💡',
+                        borderColor: 'border-purple-300'
+                    },
+                    growth: {
+                        title: '🌱 冲突解决成长空间',
+                        description: '学习用爱化解矛盾，让关系更稳固',
+                        points: [
+                            '争吵时先深呼吸，冷静30秒',
+                            '用"我感到"代替"你总是"',
+                            '记得争吵的目的是解决问题，不是赢',
+                            '和好后可以一起吃顿好吃的，增进感情'
+                        ],
+                        color: 'bg-gradient-to-br from-purple-50 to-indigo-50',
+                        icon: '🌈',
+                        borderColor: 'border-purple-300'
+                    }
+                },
+                '情绪觉察': {
+                    shine: {
+                        title: '✨ 高情商觉察力',
+                        description: '你是情绪的温柔守护者',
+                        points: [
+                            '对自己和对方情绪敏锐觉察',
+                            '能及时给予情感支持',
+                            '在情绪波动中保持理性',
+                            '是关系中的"情绪营养师"'
+                        ],
+                        color: 'bg-gradient-to-br from-purple-50 to-indigo-50',
+                        icon: '💎',
+                        borderColor: 'border-purple-300'
+                    },
+                    potential: {
+                        title: '✨ 情绪觉察潜力者',
+                        description: '你的情感感知力正在觉醒',
+                        points: [
+                            '有时能感受到对方的情绪变化',
+                            '愿意关心伴侣的感受',
+                            '只要多留意，就能成为情绪觉察的高手',
+                            '你的理解会让对方感到被看见'
+                        ],
+                        color: 'bg-gradient-to-br from-purple-50 to-indigo-50',
+                        icon: '👁️',
+                        borderColor: 'border-purple-300'
+                    },
+                    growth: {
+                        title: '🌱 情绪觉察成长空间',
+                        description: '学习感受自己和对方的情绪，让关系更亲密',
+                        points: [
+                            '每天花5分钟关注自己的情绪',
+                            '问伴侣"今天感觉怎么样？"并认真倾听',
+                            '学习识别情绪背后的需求',
+                            '情绪觉察是爱的开始，慢慢来'
+                        ],
+                        color: 'bg-gradient-to-br from-purple-50 to-indigo-50',
+                        icon: '💝',
+                        borderColor: 'border-purple-300'
+                    }
+                }
+            };
+            
+            // 初始化维度分析
+            dimensionAnalysis = '';
+            
+            // 生成恋爱闪光点
+            if (highScoreDimensions.length > 0) {
+                dimensionAnalysis += '<div class="mb-12">';
+                dimensionAnalysis += '<h3 class="text-2xl font-bold text-gray-800 mb-6" style="font-family: \'Playfair Display\', serif;">' + (currentTestType === 'self_test' ? '你的' : 'TA的') + '恋爱闪光点</h3>';
+                dimensionAnalysis += '<div class="grid grid-cols-1 md:grid-cols-2 gap-6">';
+                
+                highScoreDimensions.forEach(dimension => {
+                    const details = dimensionDetails[dimension]?.shine || {
+                        title: `✨ ${dimension}`,
+                        description: '在这方面表现出色',
+                        points: ['值得肯定的优秀特质', '继续保持这份美好', '你是独一无二的珍贵存在'],
+                        color: 'bg-gradient-to-br from-purple-50 to-indigo-50',
+                        icon: '✨',
+                        borderColor: 'border-purple-300',
+                        textColor: 'text-purple-800'
+                    };
+                    
+                    dimensionAnalysis += `<div class="${details.color} p-6 rounded-2xl shadow-sm border-t-4 ${details.borderColor} hover:shadow-md transition-all duration-300 hover:translate-y-[-2px]">`;
+                    dimensionAnalysis += `<div class="flex items-center mb-4">`;
+                    dimensionAnalysis += `<span class="text-2xl mr-3">${details.icon}</span>`;
+                    dimensionAnalysis += `<h4 class="text-lg font-semibold ${details.textColor}" style="font-family: \'Playfair Display\', serif;">${details.title}</h4>`;
+                    dimensionAnalysis += `</div>`;
+                    dimensionAnalysis += `<p class="text-gray-700 mb-5 leading-relaxed">${details.description}</p>`;
+                    dimensionAnalysis += `<ul class="space-y-2">`;
+                    
+                    details.points.forEach(point => {
+                        dimensionAnalysis += `<li class="flex items-start">`;
+                        dimensionAnalysis += `<span class="${details.textColor} mr-2 mt-1">•</span>`;
+                        dimensionAnalysis += `<span class="text-gray-600 leading-relaxed">${point}</span>`;
+                        dimensionAnalysis += `</li>`;
+                    });
+                    
+                    dimensionAnalysis += `</ul>`;
+                    dimensionAnalysis += `</div>`;
+                });
+                
+                dimensionAnalysis += '</div>';
+                dimensionAnalysis += '</div>';
+            }
+            
+            // 生成恋爱潜力领域
+            if (potentialDimensions.length > 0) {
+                dimensionAnalysis += '<div class="mb-12">';
+                dimensionAnalysis += '<h3 class="text-2xl font-bold text-gray-800 mb-6" style="font-family: \'Playfair Display\', serif;">' + (currentTestType === 'self_test' ? '你的' : 'TA的') + '恋爱潜力领域</h3>';
+                dimensionAnalysis += '<div class="grid grid-cols-1 md:grid-cols-2 gap-6">';
+                
+                potentialDimensions.forEach(dimension => {
+                    const details = dimensionDetails[dimension]?.potential || {
+                        title: `🌱 ${dimension}`,
+                        description: '在这方面有很大潜力',
+                        points: ['你的潜力正在萌芽', '继续努力，你会越来越棒', '相信自己，你可以的'],
+                        color: 'bg-gradient-to-br from-purple-50 to-indigo-50',
+                        icon: '🌱',
+                        borderColor: 'border-purple-300',
+                        textColor: 'text-purple-800'
+                    };
+                    
+                    dimensionAnalysis += `<div class="${details.color} p-6 rounded-2xl shadow-sm border-t-4 ${details.borderColor} hover:shadow-md transition-all duration-300 hover:translate-y-[-2px]">`;
+                    dimensionAnalysis += `<div class="flex items-center mb-4">`;
+                    dimensionAnalysis += `<span class="text-2xl mr-3">${details.icon}</span>`;
+                    dimensionAnalysis += `<h4 class="text-lg font-semibold ${details.textColor}" style="font-family: \'Playfair Display\', serif;">${details.title}</h4>`;
+                    dimensionAnalysis += `</div>`;
+                    dimensionAnalysis += `<p class="text-gray-700 mb-5 leading-relaxed">${details.description}</p>`;
+                    dimensionAnalysis += `<ul class="space-y-2">`;
+                    
+                    details.points.forEach(point => {
+                        dimensionAnalysis += `<li class="flex items-start">`;
+                        dimensionAnalysis += `<span class="${details.textColor} mr-2 mt-1">•</span>`;
+                        dimensionAnalysis += `<span class="text-gray-600 leading-relaxed">${point}</span>`;
+                        dimensionAnalysis += `</li>`;
+                    });
+                    
+                    dimensionAnalysis += `</ul>`;
+                    dimensionAnalysis += `</div>`;
+                });
+                
+                dimensionAnalysis += '</div>';
+                dimensionAnalysis += '</div>';
+            }
+            
+            // 生成成长空间
+            if (growthDimensions.length > 0) {
+                dimensionAnalysis += '<div class="mb-12">';
+                dimensionAnalysis += '<h3 class="text-2xl font-bold text-gray-800 mb-6" style="font-family: \'Playfair Display\', serif;">' + (currentTestType === 'self_test' ? '你的' : 'TA的') + '成长空间</h3>';
+                dimensionAnalysis += '<div class="grid grid-cols-1 md:grid-cols-2 gap-6">';
+                
+                growthDimensions.forEach(dimension => {
+                    const details = dimensionDetails[dimension]?.growth || {
+                        title: `💛 ${dimension}`,
+                        description: '在这方面有成长的空间',
+                        points: ['每个人都有成长的机会', '慢慢来，你会越来越好', '相信自己，你可以的'],
+                        color: 'bg-gradient-to-br from-purple-50 to-indigo-50',
+                        icon: '💛',
+                        borderColor: 'border-purple-300',
+                        textColor: 'text-purple-800'
+                    };
+                    
+                    dimensionAnalysis += `<div class="${details.color} p-6 rounded-2xl shadow-sm border-t-4 ${details.borderColor} hover:shadow-md transition-all duration-300 hover:translate-y-[-2px]">`;
+                    dimensionAnalysis += `<div class="flex items-center mb-4">`;
+                    dimensionAnalysis += `<span class="text-2xl mr-3">${details.icon}</span>`;
+                    dimensionAnalysis += `<h4 class="text-lg font-semibold ${details.textColor}" style="font-family: \'Playfair Display\', serif;">${details.title}</h4>`;
+                    dimensionAnalysis += `</div>`;
+                    dimensionAnalysis += `<p class="text-gray-700 mb-5 leading-relaxed">${details.description}</p>`;
+                    dimensionAnalysis += `<ul class="space-y-2">`;
+                    
+                    details.points.forEach(point => {
+                        dimensionAnalysis += `<li class="flex items-start">`;
+                        dimensionAnalysis += `<span class="${details.textColor} mr-2 mt-1">•</span>`;
+                        dimensionAnalysis += `<span class="text-gray-600 leading-relaxed">${point}</span>`;
+                        dimensionAnalysis += `</li>`;
+                    });
+                    
+                    dimensionAnalysis += `</ul>`;
+                    dimensionAnalysis += `</div>`;
+                });
+                
+                dimensionAnalysis += '</div>';
+                dimensionAnalysis += '</div>';
+            }
+            
+            // 生成结果解释（添加精美格式和分享元素）
+            explanation = currentTestType === 'self_test' ? `
+                <div class="bg-white/90 backdrop-blur-sm p-6 rounded-xl mb-6 border border-purple-100 shadow-lg">
+                    <div class="flex items-center justify-between mb-4">
+                        <h3 class="text-2xl font-bold text-gray-800">你的恋爱心理成熟度报告</h3>
+                        <div class="bg-purple-700 text-white px-4 py-1 rounded-full text-sm font-medium">${levelText}</div>
+                    </div>
+                    
+                    <div class="mb-4">
+                        <div class="text-gray-600 mb-1">成熟度指数</div>
+                        <div class="text-3xl font-bold text-purple-800">${results.overallResult}分</div>
+                    </div>
+                    
+                    <p class="text-gray-700 mb-6 leading-relaxed">${levelDescription}</p>
+                    
+                    ${dimensionAnalysis}
+                    
+                    <div class="mt-6 pt-4 border-t border-purple-100">
+                        <p class="text-sm text-gray-600 italic">💡 心理学小知识：恋爱成熟度并非天生，而是可以通过自我觉察和刻意练习不断提升的能力哦～</p>
+                    </div>
+                </div>` : `
+                <div class="bg-white/90 backdrop-blur-sm p-6 rounded-xl mb-6 border border-blue-100 shadow-lg">
+                    <div class="flex items-center justify-between mb-4">
+                        <h3 class="text-2xl font-bold text-gray-800">TA的恋爱心理成熟度报告</h3>
+                        <div class="bg-blue-700 text-white px-4 py-1 rounded-full text-sm font-medium">${levelText}</div>
+                    </div>
+                    
+                    <div class="mb-4">
+                        <div class="text-gray-600 mb-1">成熟度指数</div>
+                        <div class="text-3xl font-bold text-blue-800">${results.overallResult}分</div>
+                    </div>
+                    
+                    <p class="text-gray-700 mb-6 leading-relaxed">${levelDescription}</p>
+                    
+                    ${dimensionAnalysis}
+                    
+                    <div class="mt-6 pt-4 border-t border-blue-100">
+                        <p class="text-sm text-gray-600 italic">💡 关系小贴士：理解TA的恋爱模式，并用TA能接受的方式相处，会让你们的关系更加和谐哦～</p>
+                    </div>
+                </div>`;
+            explanationContent.innerHTML = explanation;
+            
+
+            
+            // 显示星座解读
+            const zodiacContent = document.getElementById('zodiac-content');
+            const zodiacInterpretationSection = document.getElementById('zodiac-interpretation');
+            if (selectedZodiac) {
+                zodiacInterpretationSection.classList.remove('hidden');
+                const zodiacInterpretation = generateZodiacInterpretation(results, selectedZodiac);
+                zodiacContent.innerHTML = zodiacInterpretation;
+            } else {
+                zodiacInterpretationSection.classList.add('hidden');
+            }
+            
+
+
+            
+            // 生成雷达图
+            setTimeout(() => {
+                createRadarChart(results);
+            }, 500);
+            
+            // 切换页面到结果页
+            switchPage('result');
+        }
+
+        // 创建雷达图
+        function createRadarChart(results) {
+            const ctx = document.getElementById('result-chart').getContext('2d');
+            
+            // 准备数据 - 确保按8大维度的固定顺序排列
+            const dimensionsOrder = ['边界感平衡', '沟通表达', '责任与承诺', '爱情保鲜', '金钱观匹配', '安全感供给', '冲突解决', '情绪觉察'];
+            const labels = dimensionsOrder.filter(dim => results.dimensionScores.hasOwnProperty(dim));
+            const data = labels.map(label => results.dimensionScores[label].percentage);
+            
+            // 创建图表
+            new Chart(ctx, {
+                type: 'radar',
+                data: {
+                    labels: labels,
+                    datasets: [{
+                        label: currentTestType === 'self_test' ? '你的得分' : 'TA的得分',
+                        data: data,
+                        // 优化配色方案，提高可见度和区分度
+                        backgroundColor: 'rgba(128, 90, 213, 0.3)',
+                        borderColor: 'rgba(128, 90, 213, 0.9)',
+                        pointBackgroundColor: '#805AD5',
+                        pointBorderColor: '#fff',
+                        pointHoverBackgroundColor: '#fff',
+                        pointHoverBorderColor: '#805AD5',
+                        pointRadius: 6,
+                        pointHoverRadius: 10,
+                        pointHoverBorderWidth: 3,
+                        borderWidth: 2
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    scales: {
+                        r: {
+                            // 优化坐标轴，确保3个选项数据的精准匹配
+                            angleLines: {
+                                display: true,
+                                color: 'rgba(0, 0, 0, 0.1)'
+                            },
+                            // 为3个选项（1-2-4分）设置精准的刻度
+                            min: 0,
+                            max: 100,
+                            // 添加参考线，对应3个选项的精确位置
+                            grid: {
+                                color: 'rgba(0, 0, 0, 0.1)'
+                            },
+                            ticks: {
+                                // 为3个选项设置精准的刻度，确保与评分系统完全匹配
+                                stepSize: 50, // 0, 50, 100 对应1-2-4分的三个选项
+                                backdropColor: 'transparent',
+                                font: {
+                                    size: 10,
+                                    weight: 'bold'
+                                },
+                                // 自定义刻度标签，显示与3个选项直接对应的等级
+                                callback: function(value) {
+                                    if (value === 0) return '较低';
+                                    if (value === 50) return '中等';
+                                    if (value === 100) return '优秀';
+                                    return '';
+                                },
+                                showLabelBackdrop: false
+                            },
+                            // 优化数据标签显示位置，避免重叠
+                            pointLabels: {
+                                font: {
+                                    size: 10,
+                                    weight: 'bold'
+                                },
+                                color: '#333',
+                                // 添加内边距，避免标签与图表重叠
+                                padding: 10
+                            }
+                        }
+                    },
+                    plugins: {
+                        legend: {
+                            position: 'top',
+                            labels: {
+                                font: {
+                                    size: 12,
+                                    weight: 'bold'
+                                },
+                                padding: 20,
+                                usePointStyle: true,
+                                pointStyle: 'circle'
+                            }
+                        },
+                        title: {
+                            display: true,
+                            text: currentTestType === 'self_test' ? '你的八大维度得分' : 'TA的八大维度得分',
+                            font: {
+                                size: 14,
+                                weight: 'bold'
+                            },
+                            padding: 20,
+                            color: '#333'
+                        },
+                        // 优化提示框，提供更详细的数据信息
+                        tooltip: {
+                            backgroundColor: 'rgba(138, 43, 226, 0.95)',
+                            titleFont: {
+                                size: 15,
+                                weight: 'bold'
+                            },
+                            bodyFont: {
+                                size: 14
+                            },
+                            padding: 15,
+                            cornerRadius: 10,
+                            displayColors: true,
+                            // 自定义提示框内容，显示百分比和对应等级及原始分数
+                            callbacks: {
+                                label: function(context) {
+                                    const value = context.parsed.r;
+                                    let level;
+                                    let originalScore;
+                                    
+                                    if (value <= 16.67) { // 0-16.67% 对应主要选择了1分选项
+                                        level = '较低';
+                                        originalScore = '主要选择了1分选项';
+                                    } else if (value <= 83.33) { // 16.68-83.33% 对应混合选择2分选项
+                                        level = '中等';
+                                        originalScore = '主要选择了2分选项';
+                                    } else { // 83.34-100% 对应主要选择了4分选项
+                                        level = '优秀';
+                                        originalScore = '主要选择了4分选项';
+                                    }
+                                    
+                                    return [
+                                        `${context.dataset.label}: ${value.toFixed(1)}%`,
+                                        `等级: ${level}`
+                                    ];
+                                }
+                            }
+                        }
+                    },
+                    // 优化交互体验
+                    interaction: {
+                        mode: 'index', // 使用index模式更好地响应雷达图的交互
+                        intersect: false
+                    },
+                    // 添加动画效果，提升用户体验
+                    animation: {
+                        duration: 2000,
+                        easing: 'easeInOutQuart',
+                        animateScale: true,
+                        animateRotate: true
+                    }
+                }
+            });
+        }
+
+        // 事件监听已移至页面加载完成后绑定（使用新的测试选择卡片）
+
+        prevBtn.addEventListener('click', () => {
+            if (currentQuestionIndex > 0) {
+                currentQuestionIndex--;
+                showQuestion();
+            }
+        });
+
+        nextBtn.addEventListener('click', () => {
+            // 检查是否已选择答案
+            if (selectedAnswers[currentQuestionIndex] === undefined) {
+                alert('请选择一个答案后继续');
+                return;
+            }
+            
+            if (currentQuestionIndex < totalQuestions - 1) {
+                currentQuestionIndex++;
+                showQuestion();
+            } else {
+                // 提交测试
+                showResults();
+            }
+        });
+
+        restartTestBtn.addEventListener('click', () => {
+            initTest(currentTestType);
+        });
+
+        changeTestTypeBtn.addEventListener('click', () => {
+            const newTestType = currentTestType === 'self_test' ? 'lover_test' : 'self_test';
+            initTest(newTestType);
+        });
+
+        // 初始化星座选择器
+        function initZodiacSelection() {
+            const zodiacContainer = document.getElementById('zodiac-container');
+            
+            // 清空容器
+            zodiacContainer.innerHTML = '';
+            
+            // 生成星座选项
+            zodiacData.forEach(zodiac => {
+                const zodiacOption = document.createElement('button');
+                zodiacOption.className = 'zodiac-option p-4 border-2 border-purple-200 rounded-xl flex flex-col items-center hover:shadow-lg transition-all duration-300 transform hover:scale-105 cursor-pointer';
+                zodiacOption.dataset.zodiac = zodiac.name;
+                zodiacOption.style.borderColor = zodiac.color;
+                zodiacOption.style.transition = 'all 0.3s ease';
+                
+                zodiacOption.innerHTML = `
+                    <div class="relative w-12 h-12 rounded-full flex items-center justify-center mb-2" style="background: linear-gradient(135deg, ${zodiac.color}20, ${zodiac.color}40);">
+                        <i class="${zodiac.icon} text-2xl" style="color: ${zodiac.color};"></i>
+                        <span class="checkmark hidden absolute inset-0 flex items-center justify-center text-white text-xl bg-[#805AD5]">✓</span>
+                    </div>
+                    <span class="text-sm font-medium" style="color: ${zodiac.color};">${zodiac.name}</span>
+                    <span class="text-xs text-gray-500 mt-1">${zodiac.dateRange}</span>
+                `;
+                
+                // 添加点击事件
+                zodiacOption.addEventListener('click', () => {
+                    // 添加点击反馈效果
+                    zodiacOption.style.transform = 'scale(0.95)';
+                    setTimeout(() => {
+                        zodiacOption.style.transform = '';
+                        selectZodiac(zodiac.name);
+                    }, 100);
+                });
+                
+                zodiacContainer.appendChild(zodiacOption);
+            });
+            
+            // 添加清除选择按钮事件
+            const clearZodiacBtn = document.getElementById('clear-zodiac');
+            if (clearZodiacBtn) {
+                clearZodiacBtn.addEventListener('click', () => {
+                    clearZodiacSelection();
+                });
+            }
+        }
+        
+        // 选择星座
+        function selectZodiac(zodiacName) {
+            // 清除之前的选择
+            document.querySelectorAll('.zodiac-option').forEach(option => {
+                option.classList.remove('border-purple-500', 'bg-purple-50', 'selected');
+                option.querySelector('.checkmark').classList.add('hidden');
+            });
+            
+            // 高亮当前选择
+            const selectedOption = document.querySelector(`[data-zodiac="${zodiacName}"]`);
+            const zodiac = zodiacData.find(z => z.name === zodiacName);
+            
+            selectedOption.classList.add('border-purple-500', 'bg-purple-50', 'selected');
+            selectedOption.style.boxShadow = `0 0 0 3px ${zodiac.color}30`;
+            selectedOption.querySelector('.checkmark').classList.remove('hidden');
+            
+            // 记录选择
+            selectedZodiac = zodiacName;
+            
+            // 启用确认按钮并添加脉动动画
+            const confirmZodiacBtn = document.getElementById('confirm-zodiac');
+            if (confirmZodiacBtn) {
+                confirmZodiacBtn.disabled = false;
+                confirmZodiacBtn.classList.add('pulse-animation');
+            }
+        }
+        
+        // 清除星座选择
+        function clearZodiacSelection() {
+            document.querySelectorAll('.zodiac-option').forEach(option => {
+                option.classList.remove('border-purple-500', 'bg-purple-50', 'selected');
+                option.style.boxShadow = '';
+                option.querySelector('.checkmark').classList.add('hidden');
+            });
+            selectedZodiac = null;
+            
+            // 禁用确认按钮并移除脉动动画
+            const confirmZodiacBtn = document.getElementById('confirm-zodiac');
+            if (confirmZodiacBtn) {
+                confirmZodiacBtn.disabled = true;
+                confirmZodiacBtn.classList.remove('pulse-animation');
+            }
+        }
+        
+        // 生成星座解读
+        function generateZodiacInterpretation(results, zodiacName) {
+            const zodiac = zodiacInterpretations[zodiacName];
+            if (!zodiac) return '';
+            
+            // 获取星座专属颜色
+            const zodiacColor = zodiacData.find(z => z.name === zodiacName)?.color || '#805AD5';
+            
+            // 分析维度得分
+            const highScoreDimensions = [];
+            const lowScoreDimensions = [];
+            Object.entries(results.dimensionScores).forEach(([dimension, data]) => {
+                if (data.percentage >= 70) {
+                    highScoreDimensions.push(dimension);
+                } else if (data.percentage < 60) {
+                    lowScoreDimensions.push(dimension);
+                }
+            });
+            
+            // 根据总体得分生成解读（温暖治愈风格）
+            let scoreLevelInterpretation = '';
+            if (results.overallResult >= 90) {
+                scoreLevelInterpretation = '亲爱的，你的恋爱心理成熟度令人赞叹！你已经拥有了建立健康稳定、充满爱的关系的能力，这是非常珍贵的礼物。';
+            } else if (results.overallResult >= 70) {
+                scoreLevelInterpretation = '你在恋爱中的表现已经很棒了！大多数情况下都能处理好恋爱关系中的各种情况，继续保持这份美好吧。';
+            } else if (results.overallResult >= 50) {
+                scoreLevelInterpretation = '你已经具备了一定的恋爱心理基础，虽然还有提升空间，但每一步成长都会让你更加懂得爱与被爱。';
+            } else {
+                scoreLevelInterpretation = '不要着急，每个人的成长节奏都不同。现在正是你探索自我、学习爱的好时机，相信你会在这个过程中收获满满。';
+            }
+            
+            // 生成高得分维度解读
+            let highScoreInterpretation = '';
+            if (highScoreDimensions.length > 0) {
+                highScoreInterpretation = `特别要为你点赞的是，在${highScoreDimensions.join('、')}等方面，你表现得尤为出色！这些优势与${zodiacName}的特质完美呼应，让你的魅力更加独特动人。`;
+            } else {
+                highScoreInterpretation = '你在各个维度的表现都很均衡，这种全面发展的状态正是恋爱关系中难能可贵的品质。';
+            }
+            
+            // 生成低得分维度解读
+            let lowScoreInterpretation = '';
+            if (lowScoreDimensions.length > 0) {
+                lowScoreInterpretation = `在${lowScoreDimensions.join('、')}等方面，你可以给自己一些成长的空间。结合${zodiacName}的特点，这些小领域的提升会让你的恋爱关系更加美满。`;
+            } else {
+                lowScoreInterpretation = '你在各个方面的表现都很稳定，没有明显需要提升的地方。继续保持这份用心与真诚，你的爱情一定会越来越美好。';
+            }
+            
+            // 生成最终解读 - 高级UI设计
+            let interpretation = `
+                <!-- 星座标题区域 -->
+                <div class="mb-8 text-center">
+                    <h3 class="text-3xl font-bold" style="font-family: 'Playfair Display', serif; color: ${zodiacColor}; margin-bottom: 8px;">${zodiacName}恋爱心理解读</h3>
+                    <p class="text-sm text-gray-600 italic" style="font-family: 'Playfair Display', serif;">探索你的爱情特质与成长方向</p>
+                </div>
+                
+                <!-- 恋爱心理特质卡片 -->
+                <div class="mb-6 p-6 rounded-2xl shadow-md" style="background: linear-gradient(135deg, ${zodiacColor}15 0%, ${zodiacColor}05 100%); border-left: 4px solid ${zodiacColor};">
+                    <h4 class="text-xl font-semibold mb-4" style="font-family: 'Playfair Display', serif; color: ${zodiacColor};">你的恋爱心理特质</h4>
+                    <div class="space-y-4">
+                        <div class="bg-white bg-opacity-70 p-4 rounded-xl">
+                            <p class="font-medium text-gray-800 mb-2">✨ 你的优势</p>
+                            <p class="text-gray-700 leading-relaxed">${zodiac.strengths}</p>
+                        </div>
+                        <div class="bg-white bg-opacity-70 p-4 rounded-xl">
+                            <p class="font-medium text-gray-800 mb-2">💫 成长空间</p>
+                            <p class="text-gray-700 leading-relaxed">${zodiac.challenges}</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- 测试结果与星座结合分析 -->
+                <div class="mb-6 p-6 rounded-2xl shadow-md" style="background: linear-gradient(135deg, ${zodiacColor}15 0%, ${zodiacColor}05 100%); border-left: 4px solid ${zodiacColor};">
+                    <h4 class="text-xl font-semibold mb-4" style="font-family: 'Playfair Display', serif; color: ${zodiacColor};">测试结果与星座结合分析</h4>
+                    <div class="space-y-3 text-gray-700 leading-relaxed">
+                        <p>${scoreLevelInterpretation}</p>
+                        <p>${highScoreInterpretation}</p>
+                        <p>${lowScoreInterpretation}</p>
+                    </div>
+                </div>
+                
+                <!-- 你的恋爱语言与情绪价值 -->
+                <div class="mb-6 p-6 rounded-2xl shadow-md" style="background: linear-gradient(135deg, ${zodiacColor}15 0%, ${zodiacColor}05 100%); border-left: 4px solid ${zodiacColor};">
+                    <h4 class="text-xl font-semibold mb-4" style="font-family: 'Playfair Display', serif; color: ${zodiacColor};">你的恋爱语言与情绪价值</h4>
+                    <div class="space-y-4">
+                        <div class="bg-white bg-opacity-70 p-4 rounded-xl">
+                            <p class="font-medium text-gray-800 mb-2">💌 你的恋爱语言</p>
+                            <p class="text-gray-700 leading-relaxed">${zodiac.loveLanguage}</p>
+                        </div>
+                        <div class="bg-white bg-opacity-70 p-4 rounded-xl">
+                            <p class="font-medium text-gray-800 mb-2">❤️ 你的情绪价值</p>
+                            <p class="text-gray-700 leading-relaxed">${zodiac.emotionalValue}</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- 成长建议 -->
+                <div class="mb-6 p-6 rounded-2xl shadow-md" style="background: linear-gradient(135deg, ${zodiacColor}15 0%, ${zodiacColor}05 100%); border-left: 4px solid ${zodiacColor};">
+                    <h4 class="text-xl font-semibold mb-4" style="font-family: 'Playfair Display', serif; color: ${zodiacColor};">温暖成长建议</h4>
+                    <p class="text-gray-700 mb-3 leading-relaxed">结合你的测试结果和${zodiacName}的特点，我想对你说：</p>
+                    <ul class="list-disc pl-6 space-y-2 text-gray-700">
+                        <li>继续发挥${zodiac.strengths.split('，')[0]}的美好特质，这是你最吸引人的地方。</li>
+                        <li>在面对${zodiac.challenges.split('，')[0]}的情况时，试着给自己一点耐心和温柔。</li>
+                        <li>${lowScoreDimensions.length > 0 ? `在${lowScoreDimensions.join('、')}方面，你可以慢慢来，每一点进步都是值得庆祝的。` : '你已经做得很好了，继续保持这份对爱的用心与真诚。'}</li>
+                        <li>记得常常倾听自己内心的声音，也试着理解伴侣的感受，爱会在彼此的包容中更加深厚。</li>
+                    </ul>
+                </div>
+                
+                <!-- 星座恋爱兼容性 -->
+                <div class="mb-6 p-6 rounded-2xl shadow-md" style="background: linear-gradient(135deg, ${zodiacColor}15 0%, ${zodiacColor}05 100%); border-left: 4px solid ${zodiacColor};">
+                    <h4 class="text-xl font-semibold mb-4" style="font-family: 'Playfair Display', serif; color: ${zodiacColor};">星座恋爱兼容性</h4>
+                    <p class="text-gray-700 leading-relaxed">${zodiac.compatibility}</p>
+                </div>
+                
+                <!-- 温馨结语 -->
+                <div class="text-center p-6 rounded-2xl" style="background: linear-gradient(135deg, ${zodiacColor}20 0%, ${zodiacColor}10 100%);">
+                    <p class="text-gray-700 italic leading-relaxed" style="font-family: 'Playfair Display', serif;">
+                        亲爱的${zodiacName}，每一段爱情都是独特的旅程。请记住，你本身就拥有爱的能力，
+                        愿你在爱的道路上，既能享受被爱，也能勇敢去爱，成为更好的自己。
+                    </p>
+                </div>
+            `;
+            
+            return interpretation;
+        }
+        
+        // 初始化页面
+        document.addEventListener('DOMContentLoaded', () => {
+            console.log('DOM加载完成，开始初始化页面');
+            
+            try {
+                // 页面加载时显示引导页，同时显示固定导航
+                switchPage('intro');
+                console.log('初始页面状态设置完成');
+                
+                // 获取页面元素
+                const skipZodiacBtn = document.getElementById('skip-zodiac');
+                const confirmZodiacBtn = document.getElementById('confirm-zodiac');
+                const clearZodiacBtn = document.getElementById('clear-zodiac');
+                console.log('页面元素获取完成');
+                
+                // 初始化星座选择器
+                initZodiacSelection();
+                console.log('星座选择器初始化完成');
+                
+                // 初始化测试类型
+                let selectedTestType = 'self_test';
+                
+                // 开始测试按钮点击事件
+                const startTestBtn = document.getElementById('start-test-btn');
+                if (startTestBtn) {
+                    startTestBtn.addEventListener('click', () => {
+                        console.log('点击开始测试，测试类型：', selectedTestType);
+                        initTest(selectedTestType);
+                    });
+                }
+                
+
+                
+                // 最终行动号召 - 自我测试按钮
+                const finalSelfTestBtn = document.getElementById('final-self-test-btn');
+                if (finalSelfTestBtn) {
+                    finalSelfTestBtn.addEventListener('click', () => {
+                        selectedTestType = 'self_test';
+                        console.log('最终行动号召 - 开始自我测试');
+                        initTest(selectedTestType);
+                    });
+                }
+                
+                // 最终行动号召 - 伴侣测试按钮
+                const finalLoverTestBtn = document.getElementById('final-lover-test-btn');
+                if (finalLoverTestBtn) {
+                    finalLoverTestBtn.addEventListener('click', () => {
+                        selectedTestType = 'lover_test';
+                        console.log('最终行动号召 - 开始伴侣测试');
+                        initTest(selectedTestType);
+                    });
+                }
+
+
+                
+                const changeTestTypeBtn = document.getElementById('change-test-type');
+                if (changeTestTypeBtn) {
+                    changeTestTypeBtn.addEventListener('click', () => {
+                // 重置测试状态
+                currentQuestionIndex = 0;
+                selectedAnswers = [];
+                dimensionScores = {};
+                selectedZodiac = null;
+                
+                // 更新星座选择按钮状态
+                if (confirmZodiacBtn) {
+                    confirmZodiacBtn.disabled = true;
+                }
+                
+                // 返回首页
+                switchPage('intro');
+            });
+        }
+            
+            // 导航按钮事件监听器已在页面加载时定义，无需重复绑定
+            
+            // 星座选择页面按钮事件
+            if (skipZodiacBtn) {
+                skipZodiacBtn.addEventListener('click', () => {
+                    console.log('跳过按钮被点击');
+                    selectedZodiac = null;
+                    console.log('调用startTestFromZodiac函数');
+                    startTestFromZodiac();
+                });
+            }
+            
+            if (confirmZodiacBtn) {
+                confirmZodiacBtn.addEventListener('click', () => {
+                    console.log('确认按钮被点击');
+                    console.log('调用startTestFromZodiac函数');
+                    startTestFromZodiac();
+                });
+            }
+            
+            if (clearZodiacBtn) {
+                clearZodiacBtn.addEventListener('click', () => {
+                    selectedZodiac = null;
+                    if (confirmZodiacBtn) {
+                        confirmZodiacBtn.disabled = true;
+                    }
+                    // 重新初始化星座选择容器
+                    const zodiacContainer = document.getElementById('zodiac-container');
+                    zodiacContainer.innerHTML = '';
+                    initZodiacSelection();
+                });
+            }
+        
+
+
+            // 捕获并处理初始化过程中的任何错误
+            } catch (error) {
+                console.error('页面初始化错误:', error);
+            }
+        });
+    </script>
+</body>
+</html>
